@@ -63,4 +63,37 @@ C# projekt, ASP.NET Web Appplication (.NET Framework) kiválasztása után:
 
 ## Code First Migrations
 
+```
+ Adatbázis                               Alkalmazás
++------------------------+              +---------------------------+
+|                        |              |                           |
+| Text állomány          |   +------->  |  ami az adatokat          |
+|  - csv                 |              |  használja                |
+|  | xml                 |   <-------+  |                           |
+|  - json                |              |                           |
+| Komolyabb adatbázis    |              |                           |
+| -sqlight               |              |                           |
+| -sql szerver           |              |                           |
+|                        |              |                           |
+|                        |              |                           |
+|                        |              |                           |
+|                        |              |                           |
++------------------------+              +---------------------------+
+
+
+      Telepítéskor: egyszerre kell kialakítani az adatbázist és az alkalmazást
+      a célgépen
+
+```
+
+Az Identity nagyon csábító megoldást mutat: elindítom az alkamazást, és nem kell semmilyen telepítő, ő a háttérben létrehozza a saját adatbázisát.
+
+### 1. Feladat
+valahogy elérni, hogy ne automatikusan hozza létre az adatbázist, hanem legyen rá hatásunk.
+- [ ] mikor hozza létre?
+- [ ] hova hozza létre?
+- [ ] saját adatokat is el lehet benne helyezni?
+
+
+
 
