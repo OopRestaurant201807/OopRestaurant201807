@@ -92,6 +92,7 @@ Az Identity nagyon csábító megoldást mutat: elindítom az alkamazást, és n
 valahogy elérni, hogy ne automatikusan hozza létre az adatbázist, hanem legyen rá hatásunk.
 - [X] mikor hozza létre?
 - [X] hova hozza létre?
+- [ ] meg tudjuk-e adni az adatbázis helyét?
 - [ ] saját adatokat is el lehet benne helyezni?
 
 
@@ -158,3 +159,22 @@ ezt az adatbázist hozza létre:
 
 Az adatbázis a saját gépen a **Default SQL Instance**-ra kerül, a neve pedig **DefaultConnection**.
 
+#### Saját adatbázis megadása
+Készítünk egy kapcsolati beállítást a [https://www.connectionstrings.com/](https://www.connectionstrings.com/) segítségével.
+
+```xml
+<connectionStrings>
+    <add name="DefaultConnection" connectionString="Server=.\SQLEXPRESS;Database=OopRestaurantDb;Trusted_Connection=True"
+         providerName="System.Data.SqlClient" />
+</connectionStrings>
+```
+
+Fontos, hogy megadjuk a szerver nevét, az adatbázis nevét, és a módszert, ahogy a felhasználó bejelentkezik.
+
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201807050914249_Identity datamodel].
+Applying explicit migration: 201807050914249_Identity datamodel.
+Running Seed method.
+```
