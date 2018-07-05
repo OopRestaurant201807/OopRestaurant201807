@@ -292,3 +292,49 @@ PM> add-migration 'add MenuItem table'
 Scaffolding migration 'add MenuItem table'.
 The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration add MenuItem table' again.
 ```
+
+majd az update-database-zel frissíthetjük az adatbázist.
+
+A teljes lépéssorozatot vissza tudjuk vonni, illetve egyben le tudjuk futtatni:
+```
+PM> update-database -t 0
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Reverting migrations: [201807051033248_add MenuItem table, 201807050914249_Identity datamodel].
+Reverting explicit migration: 201807051033248_add MenuItem table.
+Reverting explicit migration: 201807050914249_Identity datamodel.
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201807050914249_Identity datamodel, 201807051033248_add MenuItem table].
+Applying explicit migration: 201807050914249_Identity datamodel.
+Applying explicit migration: 201807051033248_add MenuItem table.
+Running Seed method.
+```
+
+Egyesével is futtathatjuk oda és vissza is ezeket a lépéseket:
+
+Ha egy üres adatbázisban megadom a célverzió nevét, akkor csak addig futnak a módosító lépések
+```
+PM> update-database -t '201807050914249_Identity datamodel'
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201807050914249_Identity datamodel].
+Applying explicit migration: 201807050914249_Identity datamodel.
+```
+
+Erre persze a hiányzóakat paraméter nélkül rá tudom futtatni
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201807051033248_add MenuItem table].
+Applying explicit migration: 201807051033248_add MenuItem table.
+Running Seed method.
+```
+
+És visszavonni is tudok egy adott verzióig bezárólag:
+```
+PM> update-database -t '201807050914249_Identity datamodel'
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Reverting migrations: [201807051033248_add MenuItem table].
+Reverting explicit migration: 201807051033248_add MenuItem table.
+```
+
+
