@@ -209,6 +209,18 @@
     <Compile Include="Migrations\201807051033248_add MenuItem table.Designer.cs">
       <DependentUpon>201807051033248_add MenuItem table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807051053520_add MenuItem.Price column.cs" />
+    <Compile Include="Migrations\201807051053520_add MenuItem.Price column.Designer.cs">
+      <DependentUpon>201807051053520_add MenuItem.Price column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807051055583_set MenuItem.Name column to required.cs" />
+    <Compile Include="Migrations\201807051055583_set MenuItem.Name column to required.Designer.cs">
+      <DependentUpon>201807051055583_set MenuItem.Name column to required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807051103322_set MenuItems.Name maxlength to 200.cs" />
+    <Compile Include="Migrations\201807051103322_set MenuItems.Name maxlength to 200.Designer.cs">
+      <DependentUpon>201807051103322_set MenuItems.Name maxlength to 200.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -299,6 +311,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807051033248_add MenuItem table.resx">
       <DependentUpon>201807051033248_add MenuItem table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051053520_add MenuItem.Price column.resx">
+      <DependentUpon>201807051053520_add MenuItem.Price column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051055583_set MenuItem.Name column to required.resx">
+      <DependentUpon>201807051055583_set MenuItem.Name column to required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051103322_set MenuItems.Name maxlength to 200.resx">
+      <DependentUpon>201807051103322_set MenuItems.Name maxlength to 200.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

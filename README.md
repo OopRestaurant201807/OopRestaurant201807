@@ -337,4 +337,6 @@ Reverting migrations: [201807051033248_add MenuItem table].
 Reverting explicit migration: 201807051033248_add MenuItem table.
 ```
 
+### 3. feladat
+- [ ] Módosítani az adatmodellen és bejátszani az SQL szerverre
 
