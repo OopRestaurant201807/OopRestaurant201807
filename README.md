@@ -90,8 +90,8 @@ Az Identity nagyon csábító megoldást mutat: elindítom az alkamazást, és n
 
 ### 1. Feladat
 valahogy elérni, hogy ne automatikusan hozza létre az adatbázist, hanem legyen rá hatásunk.
-- [ ] mikor hozza létre?
-- [ ] hova hozza létre?
+- [X] mikor hozza létre?
+- [X] hova hozza létre?
 - [ ] saját adatokat is el lehet benne helyezni?
 
 
@@ -152,3 +152,9 @@ valahogy elérni, hogy ne automatikusan hozza létre az adatbázist, hanem legye
 Első körben nem fut le, ennek oka, hogy a **web.config**-ban meg van adva az adatelérési út, amit keres. Ezt az mdf állományt már töröltem, így nincs ilyen ezért hibával elszáll.
 Ha töröljük a **web.config**-ból az adatkapcsolati beállítást, akkor gond nélkül lefut.
  
+ezt az adatbázist hozza létre:
+
+![adatbázis szerkezet](img/ASP.NET-Identity-Db-Schema.png)
+
+Az adatbázis a saját gépen a **Default SQL Instance**-ra kerül, a neve pedig **DefaultConnection**.
+
