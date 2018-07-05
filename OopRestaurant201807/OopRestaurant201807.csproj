@@ -205,10 +205,15 @@
     <Compile Include="Migrations\201807050914249_Identity datamodel.Designer.cs">
       <DependentUpon>201807050914249_Identity datamodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807051033248_add MenuItem table.cs" />
+    <Compile Include="Migrations\201807051033248_add MenuItem table.Designer.cs">
+      <DependentUpon>201807051033248_add MenuItem table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -291,6 +296,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807050914249_Identity datamodel.resx">
       <DependentUpon>201807050914249_Identity datamodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051033248_add MenuItem table.resx">
+      <DependentUpon>201807051033248_add MenuItem table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

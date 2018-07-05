@@ -18,12 +18,22 @@ namespace OopRestaurant201807.Models
         }
     }
 
+    /// <summary>
+    /// Az adatok elérését lehetővé tevő osztály, több lépésben leszármaztatva
+    /// a DbContext-ből. Az adattáblák elérését lehetővé tevő gyűjteményeket
+    /// itt kell elhelyezni.
+    /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        /// <summary>
+        /// Saját adattábla kerül az Identity adatbázisába
+        /// </summary>
+        public DbSet<MenuItem> MenuItems { get; set; }
 
         public static ApplicationDbContext Create()
         {

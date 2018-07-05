@@ -93,7 +93,6 @@ valahogy elérni, hogy ne automatikusan hozza létre az adatbázist, hanem legye
 - [X] mikor hozza létre?
 - [X] hova hozza létre?
 - [X] meg tudjuk-e adni az adatbázis helyét?
-- [ ] saját adatokat is el lehet benne helyezni?
 
 
 ```
@@ -250,4 +249,46 @@ A -Script paraméterrel nem fut le a módosítás, viszont megmutatja nekünk az
    A modell módosítása után,
    az add-migration paranccal készülnek
    a módosító lépések
+```
+
+### 2. Feladat
+- [X] saját adatokat is el lehet benne helyezni?
+
+
+Megnéztük a Gundel étterem étlapját, és a következőkre jutottunk:
+- Minden ételnek van neve, leírása, ára
+- elképzelhető, hogy nem egy étlap van egy étteremben, hanem modjuk
+  - napi ajánlatok
+  - szezonális ajánlatok
+  - itallap
+  Ezért érdemes felkészülni arra, hogy több étlapunk van. Az étlapot hívjuk **Menu**-nek.
+- az étlapon lévő ételek, azok a menü egy-egy tételei, ezért nem ételnek (food) hanem menütételnek (**MenuItem**) nevezzük a sorokat.
+
+A saját modellt létrehozva úgy tudjuk bekötni az identity adatbázisába, hogy a \Models\IdentityModels.cs-ben lévő ApplicationDbContext osztályt használjuk.
+
+Ha olyan adatbázissal dolgozom, ahonnan lépések hiányoznak, nem tudok újabb migrációs lépést hozzáadni:
+
+```
+PM> add-migration 'add MenuItem table'
+Unable to generate an explicit migration because the following explicit migrations are pending: [201807050914249_Identity datamodel]. Apply the pending explicit migrations before attempting to generate a new explicit migration.
+``` 
+
+Előtte kell egy **update-database**:
+
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201807050914249_Identity datamodel].
+Applying explicit migration: 201807050914249_Identity datamodel.
+Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
+You can use the Add-Migration command to write the pending model changes to a code-based migration.
+```
+
+A megjegyzés arra vonatkozik, hogy nem tudja az adatbázist összhangba hozni a modellünkkel, mert van olyan modell változás, ami még nincs változási scriptben.
+Viszont ez csak egy sárga figyelmeztetés, a migrációs lépéseket bejátszotta az adatbázisba, így létre tudjuk hozni a modell változásából a következő adatbázis módosítást.
+
+```
+PM> add-migration 'add MenuItem table'
+Scaffolding migration 'add MenuItem table'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration add MenuItem table' again.
 ```
