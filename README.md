@@ -95,5 +95,60 @@ valahogy elérni, hogy ne automatikusan hozza létre az adatbázist, hanem legye
 - [ ] saját adatokat is el lehet benne helyezni?
 
 
+```
+                          Entity Framework
+ Adatbázis                Code First     Alkalmazás
++------------------------+Migrations    +---------------------------+
+|                        |              |                           |
+| -MS SQL Szerver        |      +       |  ami az adatokat          |
+|                        |      |       |  használja                |
+|                        |      v       |                           |
+|                        |              |                           |
+|                        |  <--------+  |  Adatmodell módosítás     |
+|                        |              |                           |
+|                        |  <--------+  |  Adatmodell módosítás     |
+|                        |              |                           |
+|                        |  <--------+  |  Adatmodell módosítás     |
+|                        |              |                           |
+|                        |  <--------+  |  Adatmodell módosítás     |
++------------------------+              +---------------------------+
 
+      Telepítéskor:   Az alkalmazás hozza létre az adatbázist magának
+```
 
+#### A Code First Migrations beüzemelése
+- előfeltétel: az [EntityFramework Nuget csomag](https://www.nuget.org/packages/EntityFramework/) megléte (Az ASP.NET MVC Identity telepítette, ezért ez megvan)
+- engedélyezés
+  ```
+    PM> enable-migrations
+    Checking if the context targets an existing database...
+    Code First Migrations enabled for project OopRestaurant201807.
+  ```
+
+  ez létrehozta a **Migrations\Configuration.cs** állomámnyt.
+
+- az Identity modelljének kiírása egy **migration step**-be
+  ```
+    PM> add-migration 'Identity datamodel'
+    Scaffolding migration 'Identity datamodel'.
+    The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration Identity datamodel' again.
+  ```
+  a lépés megnevezése tetszőleges, én úgy hívtam, hogy *'Identity datamodel'*, hogy be tudjam azonosítani később ezt a lépést.
+
+  ez létrehozta a **Migrations\201807050914249_Identity datamodel.cs** állományt (meg még két technikai állományt)
+
+  ezt hívjuk: egy db módosító lépés, migration step. Két fontos része van: az **Up()** és a **Down()** függvények. 
+  - Az Up() fügvény akkor kell, ha a módosítást bejátsszuk az adatbázisba, 
+  - a Down() pedig akkor dolgozik, ha visszavonjuk ezt a módosítást.
+
+- A Migration step kiírása adatbázisba
+  ```
+    PM> update-database
+    Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+    Applying explicit migrations: [201807050914249_Identity datamodel].
+    Applying explicit migration: 201807050914249_Identity datamodel.
+  ```
+
+Első körben nem fut le, ennek oka, hogy a **web.config**-ban meg van adva az adatelérési út, amit keres. Ezt az mdf állományt már töröltem, így nincs ilyen ezért hibával elszáll.
+Ha töröljük a **web.config**-ból az adatkapcsolati beállítást, akkor gond nélkül lefut.
+ 
