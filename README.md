@@ -92,7 +92,7 @@ Az Identity nagyon csábító megoldást mutat: elindítom az alkamazást, és n
 valahogy elérni, hogy ne automatikusan hozza létre az adatbázist, hanem legyen rá hatásunk.
 - [X] mikor hozza létre?
 - [X] hova hozza létre?
-- [ ] meg tudjuk-e adni az adatbázis helyét?
+- [X] meg tudjuk-e adni az adatbázis helyét?
 - [ ] saját adatokat is el lehet benne helyezni?
 
 
@@ -177,4 +177,77 @@ Specify the '-Verbose' flag to view the SQL statements being applied to the targ
 Applying explicit migrations: [201807050914249_Identity datamodel].
 Applying explicit migration: 201807050914249_Identity datamodel.
 Running Seed method.
+```
+
+Ha újra futtatjuk az update-database-t, akkor ezt írja:
+
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+No pending explicit migrations.
+Running Seed method.
+```
+
+tehát, az eszközünk ismeri a modell verzióját, az adatbázis verzióját, és tudja, hogy nem hiányzik semmi.
+
+Ezt a __MigrationHistory tábla segítségével tudja.
+
+A Migrations könyvtárban lévő állománynevek tartalmazzák az adatbázis módosító lépéseket, amik a kódban vannak.
+A __MigrationHistory tábla tartalmazza azokat a lépéseket, amik az adatbázisban vannak.
+
+#### Visszavonni az egyes lépéseket
+az összes visszavonása (visszaállás a 0. verzióra)
+
+```
+PM> update-database -t 0
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Reverting migrations: [201807050914249_Identity datamodel].
+Reverting explicit migration: 201807050914249_Identity datamodel.
+PM> 
+```
+
+A **-t** a TargetMigration paraméter rövidítése, a 0 pedig a minden lépés előtti állapot
+
+#### Mit csinálnak az egyes lépések?
+```
+PM> update-database -Script
+Applying explicit migrations: [201807050914249_Identity datamodel].
+Applying explicit migration: 201807050914249_Identity datamodel.
+```
+
+A -Script paraméterrel nem fut le a módosítás, viszont megmutatja nekünk azt az SQL scriptet, amit a migration step-ből generál.
+
+```
+ A kódban lévő módosító lépések                                    Az adatbázisban lévő módosító lépések
+
++-------------------------------------+                           +---------------------------------+
+|                                     |                           |                                 |
+|                                     |   A hiányzó lépések       |                                 |
+|  A \Migrations mappa alatt lévő     |   kerülnek az adatbázisba |                                 |
+|  egyes lépések állományai           |                           |  A __MigrationHistory táblában  |
+|                                     |                           |  lévő sorok                     |
+|                                     |    update-database        |                                 |
+|                                     |                           |                                 |
+|                                     |  +--------------------->  |                                 |
+|                                     |                           |                                 |
+|                                     |  Ez a migration step-ben  |                                 |
+|                                     |  lévő köztes nyelvből     |                                 |
+|                                     |  az adatbázisnak megfelelő|                                 |
+|                                     |  SQL scriptet gyárt, majd |                                 |
+|                                     |  lefuttatja az SQL        |                                 |
+|                                     |  szerveren                |                                 |
+|                                     |                           |                                 |
+|                                     |                           |                                 |
+|                                     |                           |                                 |
+|                                     |                           |                                 |
+|    ^                                |                           |                                 |
+|    |                                |                           |                                 |
++-------------------------------------+                           +---------------------------------+
+     |
+     |
+     +
+
+   A modell módosítása után,
+   az add-migration paranccal készülnek
+   a módosító lépések
 ```
