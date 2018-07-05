@@ -42,6 +42,7 @@ Ez egyáltalán nem triviális feladat: azonosítás és jogosultságkezelés
   - jelszó bonyolultságának ellenőrzése
   - felhasználó regisztrációja
   - elfelejtett jelszó
+  - jelszóváltoztatás
   - felhaszáló lockolása megadott számú rossz próbálkozás után
   - e-mail cím ellenőrzése egy ellenőrző e-mail-lel
   - két faktoros azonosítás
@@ -53,6 +54,11 @@ Ez egyáltalán nem triviális feladat: azonosítás és jogosultságkezelés
   - linkedin
 
 Az ASP.NEt Identity mindezt helyettünk megoldja.
+
+### ASP.NET MVC alkalmazás létrehozása Identity-vel
+C# projekt, ASP.NET Web Appplication (.NET Framework) kiválasztása után:
+
+![varázsló](img/ASP.NET-Identity-wizard.png)
 
 
 ## Code First Migrations
