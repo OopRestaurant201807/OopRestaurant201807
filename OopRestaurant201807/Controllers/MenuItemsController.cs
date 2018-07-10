@@ -10,15 +10,11 @@ using OopRestaurant201807.Models;
 
 namespace OopRestaurant201807.Controllers
 {
-    /// <summary>
-    /// Kikényszerítjük, hogy csak bejelentkezett 
-    /// felhasználók használhassák ezt a Controllert
-    /// </summary>
-    [Authorize]
     public class MenuItemsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        #region Nyilvános Action-ök
         // GET: MenuItems
         public ActionResult Index()
         {
@@ -39,8 +35,15 @@ namespace OopRestaurant201807.Controllers
             }
             return View(menuItem);
         }
+        #endregion Nyilvános Action-ök
 
+        #region Csak bejelentkezett felhasználók által használható actionök
         // GET: MenuItems/Create
+        /// <summary>
+        /// Kikényszerítjük, hogy csak bejelentkezett 
+        /// felhasználók használhassák ezt az Action-t
+        /// </summary>
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -51,6 +54,7 @@ namespace OopRestaurant201807.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Price")] MenuItem menuItem)
         {
             if (ModelState.IsValid)
@@ -64,6 +68,7 @@ namespace OopRestaurant201807.Controllers
         }
 
         // GET: MenuItems/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +88,7 @@ namespace OopRestaurant201807.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Price")] MenuItem menuItem)
         {
             if (ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace OopRestaurant201807.Controllers
         }
 
         // GET: MenuItems/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +119,7 @@ namespace OopRestaurant201807.Controllers
         // POST: MenuItems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             MenuItem menuItem = db.MenuItems.Find(id);
@@ -119,7 +127,9 @@ namespace OopRestaurant201807.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        #endregion Csak bejelentkezett felhasználók által használható actionök
 
+        #region takarítás magunk után Dispose-zal
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -128,5 +138,6 @@ namespace OopRestaurant201807.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion takarítás magunk után Dispose-zal
     }
 }
