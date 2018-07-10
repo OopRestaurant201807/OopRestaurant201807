@@ -375,4 +375,13 @@ Ismétlés
 
 ```
 
- 
+### 4. feladat
+- [X] csak bejelentkezett felhasználónak szabad a menü módosítását/új elem felvitelét engedélyezni
+- [ ] be nem jelentkezett felhasználó csak megtekinteni tudja a menüt
+
+
+
+
+
+### Kérdések
+- [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
