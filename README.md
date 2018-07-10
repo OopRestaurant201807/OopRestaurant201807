@@ -380,7 +380,7 @@ Ismétlés
 - [X] be nem jelentkezett felhasználó csak megtekinteni tudja a menüt
 
 ### 5. feladat
-- [ ] amit látsz azt használhatod, amit nem használhatsz azt nem látod elv érvényesítése
+- [X] amit látsz azt használhatod, amit nem használhatsz azt nem látod elv érvényesítése
 
 
 
