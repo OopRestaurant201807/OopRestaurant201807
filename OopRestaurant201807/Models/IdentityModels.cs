@@ -39,5 +39,12 @@ namespace OopRestaurant201807.Models
         {
             return new ApplicationDbContext();
         }
+
+        /// <summary>
+        /// Ezt a hivatkozást a Controller varázsló gyártotta ide,
+        /// enélkül nincs Categories controller, mert az adatokhoz
+        /// nem fér hozzá közvetlenül, csak a MenuItems táblán keresztül
+        /// </summary>
+        public System.Data.Entity.DbSet<OopRestaurant201807.Models.Category> Categories { get; set; }
     }
 }
