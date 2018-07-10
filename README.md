@@ -385,8 +385,8 @@ Ismétlés
 ### 6. feladat
 - [X] Étlap link megjelenítése a weboldalon
 - [ ] Az ételek szakaszokba rendezése (kategória bevezetése)
-  - [ ] Létrehozni egy kategória (Category) listát
-  - [ ] webfelületet gyártani a kategória listához
+  - [X] Létrehozni egy kategória (Category) listát
+  - [X] webfelületet gyártani a kategória listához
   - [ ] kitenni a kategóriát a MenuItem-re is
 
 [Olvasnivaló: A szivárgó absztrakciók törvénye](http://hungarian.joelonsoftware.com/Articles/LeakyAbstractions.html)
