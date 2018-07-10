@@ -342,5 +342,37 @@ Reverting explicit migration: 201807051033248_add MenuItem table.
 
 
 ## 1. Házi feladat
-- [ ] Nézegetni különbözp éttermek menüit és adatmodellt készíteni belőlük a CF migration-nel
+- [ ] Nézegetni különböző éttermek menüit és adatmodellt készíteni belőlük a CF migration-nel
 - [ ] tetszőleges adatmodell kialakítása több lépésben és adatbázissá konvertálása
+
+
+Ismétlés
+
+```
+                                                                                                Felhasználó böngésző
+
+   SQL ADATBÁZIS                                    ASP.NET MVC szerveralkalmazás               (HTML/CSS/JavaScript)
+
++----------------------------+                    +------------------------+                    +------------------------+
+|                            |                    |                        |                    |                        |
+|                            |  +-------------->  |                        | +----------------> |                        |
+|                            |                    |                        |                    |                        |
+|                            |                    |                        |                    |                        |
+|                            |  <--------------+  |                        | <----------------+ |                        |
+|                            |                    |                        |                    |                        |
+|                            |                    |                        |                    |                        |
+|                            |                    | +-------+    +------+  |                    |                        |
+|                            |                    | |       |    |      |  |                    |                        |
+|                            |                    | |       | <+ |      |  |                    |                        |
+|                            |  <--------------+  | |       |    |      |  |                    |                        |
+|                            |                    | |       |    |      |  |                    |                        |
+|                            |                    | +-------+    +------+  |                    |                        |
++----------------------------+                    +------------------------+                    +------------------------+
+                                                                      ^
+                                                                      |
+                                                  Migrációs           +
+                                                  lépések          Adatmodell
+
+```
+
+ 
