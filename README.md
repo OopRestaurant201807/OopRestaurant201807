@@ -386,7 +386,18 @@ Ismétlés
 - [X] Étlap link megjelenítése a weboldalon
 - [ ] Az ételek szakaszokba rendezése (kategória bevezetése)
 
+[Olvasnivaló: A szivárgó absztrakciók törvénye](http://hungarian.joelonsoftware.com/Articles/LeakyAbstractions.html)
 
+Létrehozunk minden étel elemhez egy kategóriát. De nem tesszük bele a MenuItems táblába, (vagyis, a MenuItem sorba), hanem kiemeljük egy saját tánlázatba, ami azt jelenti, hogy saját osztályba.
+
+| Id | Name | Description |	Price | CategoryId |
+|-|-|-|-|-|
+|1|Tengeri hal trió | Atlanti lazactatár, pácolt lazacfilé és tonhal lazackaviárral | 7500 | 1 |
+|3| Borjúesszencia | Zöldséges gyöngytyúk galuska | 4500 | 1 |
+
+| Id | Category |
+| - | - |
+| 1 | Levesek, előételek |
 
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
