@@ -388,6 +388,7 @@ Ismétlés
   - [X] Létrehozni egy kategória (Category) listát
   - [X] webfelületet gyártani a kategória listához
   - [ ] kitenni a kategóriát a MenuItem-re is
+  - [ ] étlap nézet elkészítése
 
 [Olvasnivaló: A szivárgó absztrakciók törvénye](http://hungarian.joelonsoftware.com/Articles/LeakyAbstractions.html)
 
