@@ -424,8 +424,9 @@ linq információk ezzel a google kereséssel: **linq 101**
 | Előételek | Tengeri hal trió | Atlanti lazactatár, pácolt lazacfilé és tonhal lazackaviárral | 7500 | 
 | Előételek | Borjúesszencia | Zöldséges gyöngytyúk galuska | 4500 | 
 
-
-
+### 2. Házi feladat
+- kitenni a kategóriát a MenuItem-re is, átgondolni!
+- bootstrap felfedezés: a példa étlapon szereplő kinyíló és becsukódó panel megvalósítása
 
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
