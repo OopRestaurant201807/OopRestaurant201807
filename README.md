@@ -379,6 +379,9 @@ Ismétlés
 - [X] csak bejelentkezett felhasználónak szabad a menü módosítását/új elem felvitelét engedélyezni
 - [X] be nem jelentkezett felhasználó csak megtekinteni tudja a menüt
 
+### 5. feladat
+- [ ] amit látsz azt használhatod, amit nem használhatsz azt nem látod elv érvényesítése
+
 
 
 
