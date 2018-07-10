@@ -382,7 +382,9 @@ Ismétlés
 ### 5. feladat
 - [X] amit látsz azt használhatod, amit nem használhatsz azt nem látod elv érvényesítése
 
-
+### 6. feladat
+- [X] Étlap link megjelenítése a weboldalon
+- [ ] Az ételek szakaszokba rendezése (kategória bevezetése)
 
 
 
