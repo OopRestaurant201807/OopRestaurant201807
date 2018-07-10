@@ -34,6 +34,7 @@ namespace OopRestaurant201807.Models
         /// <summary>
         /// Ez az osztály az adott menüelem kategóriáját 
         /// tartalmazza
+        /// Navigation Property: egy másik táblában lévő adatot tölt be
         /// </summary>
         public Category Category { get; set; }
     }

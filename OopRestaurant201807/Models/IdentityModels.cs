@@ -35,16 +35,17 @@ namespace OopRestaurant201807.Models
         /// </summary>
         public DbSet<MenuItem> MenuItems { get; set; }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-
         /// <summary>
         /// Ezt a hivatkozást a Controller varázsló gyártotta ide,
         /// enélkül nincs Categories controller, mert az adatokhoz
         /// nem fér hozzá közvetlenül, csak a MenuItems táblán keresztül
         /// </summary>
-        public System.Data.Entity.DbSet<OopRestaurant201807.Models.Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
+
     }
 }

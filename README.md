@@ -388,7 +388,7 @@ Ismétlés
   - [X] Létrehozni egy kategória (Category) listát
   - [X] webfelületet gyártani a kategória listához
   - [ ] kitenni a kategóriát a MenuItem-re is
-  - [ ] étlap nézet elkészítése
+  - [X] étlap nézet elkészítése
 
 [Olvasnivaló: A szivárgó absztrakciók törvénye](http://hungarian.joelonsoftware.com/Articles/LeakyAbstractions.html)
 
@@ -411,6 +411,21 @@ majd ez a két lépés következik:
 PM> add-migration 'add Category table, and MenuItem.Category column'
 PM> update-database
 ```
+
+Az étlap megjelenítéséhez 
+- először végig kell menni a kategóriákon, 
+- majd az azonos kategóriához tartozó ételeket megjeleníteni
+- szükséges, hogy kategóriák szerinti sorrendet adjunk meg a lekérdezésben
+
+linq információk ezzel a google kereséssel: **linq 101**
+
+| Category.Name | Name | Description |	Price | 
+|-|-|-|-|
+| Előételek | Tengeri hal trió | Atlanti lazactatár, pácolt lazacfilé és tonhal lazackaviárral | 7500 | 
+| Előételek | Borjúesszencia | Zöldséges gyöngytyúk galuska | 4500 | 
+
+
+
 
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?

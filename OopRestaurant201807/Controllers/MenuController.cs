@@ -17,7 +17,20 @@ namespace OopRestaurant201807.Controllers
         // GET: Menu
         public ActionResult Index()
         {
-            return View(db.MenuItems.ToList());
+            var model = db.MenuItems
+                          //mivel szöveget használ, így csak futási 
+                          //időben derül ki, ha elgépeltem valamit
+                          //vagy névváltoztatás történt
+                          //.Include("Category")
+                          //-----------------------------------------------------
+                          //ez viszont hivatkozást használ, így fordítási időben
+                          //kiderül a turpisság
+                          .Include(mi=>mi.Category)
+                          //ahhoz, hogy az egyes kategóriákat egymás alatt kapjuk,
+                          //ezt biztosítani kell sorbarendezésse
+                          .OrderBy(mi=>mi.Category.Name)
+                          .ToList();
+            return View(model);
         }
 
         // GET: Menu/Details/5
