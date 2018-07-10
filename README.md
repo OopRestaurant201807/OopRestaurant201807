@@ -385,6 +385,9 @@ Ismétlés
 ### 6. feladat
 - [X] Étlap link megjelenítése a weboldalon
 - [ ] Az ételek szakaszokba rendezése (kategória bevezetése)
+  - [ ] Létrehozni egy kategória (Category) listát
+  - [ ] webfelületet gyártani a kategória listához
+  - [ ] kitenni a kategóriát a MenuItem-re is
 
 [Olvasnivaló: A szivárgó absztrakciók törvénye](http://hungarian.joelonsoftware.com/Articles/LeakyAbstractions.html)
 
@@ -399,5 +402,15 @@ Létrehozunk minden étel elemhez egy kategóriát. De nem tesszük bele a MenuI
 | - | - |
 | 1 | Levesek, előételek |
 
+Létrehozzuk a Category osztályt, és egy hivatkozást rá a MenuItem osztályból.
+
+majd ez a két lépés következik:
+
+```
+PM> add-migration 'add Category table, and MenuItem.Category column'
+PM> update-database
+```
+
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
+- [ ] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?

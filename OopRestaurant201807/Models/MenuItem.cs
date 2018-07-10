@@ -31,7 +31,10 @@ namespace OopRestaurant201807.Models
         public string Description { get; set; }
         public int Price { get; set; }
 
-        //innen indulunk: ANTIPATTERN
-        //public string Category { get; set; }
+        /// <summary>
+        /// Ez az osztály az adott menüelem kategóriáját 
+        /// tartalmazza
+        /// </summary>
+        public Category Category { get; set; }
     }
 }
