@@ -26,15 +26,19 @@
                 </div>
                 <div id="collapse@(menuItem.Category.Id)" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <h4>
-                            @Html.DisplayFor(modelItem => menuItem.Name)
-                        </h4>
-                        <p>
-                            @Html.DisplayFor(modelItem => menuItem.Description)
-                        </p>
-                        <p>
-                            <strong>@Html.DisplayFor(modelItem => menuItem.Price)</strong>
-                        </p>
+                        @*Ez egy kerülendő megoldás, ugyanazt a táblázatot még egyszer bejárjuk, immár szűrve*@
+                        @foreach (var innerMenuItem in Model.Where(x => x.Category.Name == category))
+                        {
+                            <h4>
+                                @Html.DisplayFor(modelItem => menuItem.Name)
+                            </h4>
+                            <p>
+                                @Html.DisplayFor(modelItem => menuItem.Description)
+                            </p>
+                            <p>
+                                <strong>@Html.DisplayFor(modelItem => menuItem.Price)</strong>
+                            </p>
+                        }
                     </div>
                 </div>
             </div>
