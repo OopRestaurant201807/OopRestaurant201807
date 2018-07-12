@@ -228,6 +228,14 @@
     <Compile Include="Migrations\201807100950539_add Category table, and MenuItem.Category column.Designer.cs">
       <DependentUpon>201807100950539_add Category table, and MenuItem.Category column.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807120928550_add reverse navigation property Category.MenuItems.cs" />
+    <Compile Include="Migrations\201807120928550_add reverse navigation property Category.MenuItems.Designer.cs">
+      <DependentUpon>201807120928550_add reverse navigation property Category.MenuItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807120933306_add required to MenuItem.Category.cs" />
+    <Compile Include="Migrations\201807120933306_add required to MenuItem.Category.Designer.cs">
+      <DependentUpon>201807120933306_add required to MenuItem.Category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -343,6 +351,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807100950539_add Category table, and MenuItem.Category column.resx">
       <DependentUpon>201807100950539_add Category table, and MenuItem.Category column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807120928550_add reverse navigation property Category.MenuItems.resx">
+      <DependentUpon>201807120928550_add reverse navigation property Category.MenuItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807120933306_add required to MenuItem.Category.resx">
+      <DependentUpon>201807120933306_add required to MenuItem.Category.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

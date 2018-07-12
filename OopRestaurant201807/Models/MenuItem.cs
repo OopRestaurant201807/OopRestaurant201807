@@ -36,6 +36,7 @@ namespace OopRestaurant201807.Models
         /// tartalmazza
         /// Navigation Property: egy másik táblában lévő adatot tölt be
         /// </summary>
+        [Required] // ezzel biztosítjuk, hogy a táblában a távoli kulcs mindig legyen kitöltve.
         public Category Category { get; set; }
     }
 }

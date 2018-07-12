@@ -384,10 +384,9 @@ Ismétlés
 
 ### 6. feladat
 - [X] Étlap link megjelenítése a weboldalon
-- [ ] Az ételek szakaszokba rendezése (kategória bevezetése)
+- [X] Az ételek szakaszokba rendezése (kategória bevezetése)
   - [X] Létrehozni egy kategória (Category) listát
   - [X] webfelületet gyártani a kategória listához
-  - [ ] kitenni a kategóriát a MenuItem-re is
   - [X] étlap nézet elkészítése
 
 [Olvasnivaló: A szivárgó absztrakciók törvénye](http://hungarian.joelonsoftware.com/Articles/LeakyAbstractions.html)
@@ -428,16 +427,11 @@ linq információk ezzel a google kereséssel: **linq 101**
 - bootstrap felfedezés: a példa étlapon szereplő kinyíló és becsukódó panel megvalósítása
 - kitenni a kategóriát a MenuItem-re is, átgondolni!
 
-### Kérdések
-- [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
-- [ ] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
-
-
-### 6. feladat
-- [ ] bootstrap felfedezés: a példa étlapon szereplő kinyíló és becsukódó panel megvalósítása
-  - [ ] megfelelő adatok előállítása a nézet számára: 
-    - [ ] kell egy category lista, 
-    - [ ] és az egyes category-hoz tartozó menuItem-ek listája
+### 7. feladat
+- [X] bootstrap felfedezés: a példa étlapon szereplő kinyíló és becsukódó panel megvalósítása
+  - [X] megfelelő adatok előállítása a nézet számára: 
+    - [X] kell egy category lista, 
+    - [X] és az egyes category-hoz tartozó menuItem-ek listája
 
 Megoldási lehetőségek:
 - a kapott adatokat késznek véve elkezdünk faragni a Controllerben, hogy a nézetbe megfelelő adatok kerüljenek
@@ -452,5 +446,22 @@ Categories
   - Borjúesszencia
   - Szarvasgomba cappuccino
 
+### 8. Feladat
+- [ ] kitenni a kategóriát a MenuItem-re is
+  - [ ] egyben biztosítani, hogy kategória nélküli étel ne kerüljön az adatbázisba
+    ezt a Required annotációval lehet elérni. Problémák:
+        - [ ] ha már vannak adatok, amik nem illeszkednek ehhez a megszorításhoz, nem fog lefutni a migráció
+          - vagy javítjuk az adatokat az adatbázisban (eltüntetjük a null-t). Mivel ez kézi megoldás, és kívül van migrációs lépések automatizmusán, minden adatbázison kézzel kell külön megoldani.
+          - vagy megadjuk az adott mező alapértelmezett értékét 
+        - [ ] ha van le nem futó migrációs lépésünk, akkor az alkalmazásunk sem fog lefutni, addig, amíg az alkalmazás modellje és az adatbázismodell nincs szinkronban.
+
+
 ### 3. Házi feladat
 - az eredeti táblázatból ellátni az Indexet a megfelelő adatokkal
+
+
+### Kérdések
+- [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
+- [ ] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
+- [ ] a devaultValue és a notnull rossz sorrendjének a javítása
+
