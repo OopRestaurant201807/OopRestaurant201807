@@ -425,8 +425,8 @@ linq információk ezzel a google kereséssel: **linq 101**
 | Előételek | Borjúesszencia | Zöldséges gyöngytyúk galuska | 4500 | 
 
 ### 2. Házi feladat
-- kitenni a kategóriát a MenuItem-re is, átgondolni!
 - bootstrap felfedezés: a példa étlapon szereplő kinyíló és becsukódó panel megvalósítása
+- kitenni a kategóriát a MenuItem-re is, átgondolni!
 
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?

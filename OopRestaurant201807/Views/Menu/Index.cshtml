@@ -7,26 +7,38 @@
 
 <h2>Menu</h2>
 
+<div class="panel-group" id="menu">
+    @foreach (var menuItem in Model)
+    {
 
-@foreach (var menuItem in Model)
-{
-    if(category!=menuItem.Category.Name)
-    { //megjegyezni és kiírni
-        category = menuItem.Category.Name;
-        <h3>
-            @Html.DisplayFor(modelItem => menuItem.Category.Name)
-        </h3>
+        if (category != menuItem.Category.Name)
+        { //új kategória: megjegyezni és kiírni
+            category = menuItem.Category.Name;
+
+            //a kategória külön becsukható panelen jelenik meg
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#menu" href="#collapse@(menuItem.Category.Id)">
+                            @Html.DisplayFor(modelItem => menuItem.Category.Name)
+                        </a>
+                    </h3>
+                </div>
+                <div id="collapse@(menuItem.Category.Id)" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <h4>
+                            @Html.DisplayFor(modelItem => menuItem.Name)
+                        </h4>
+                        <p>
+                            @Html.DisplayFor(modelItem => menuItem.Description)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayFor(modelItem => menuItem.Price)</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
     }
 
-    <h4>
-        @Html.DisplayFor(modelItem => menuItem.Name)
-    </h4>
-    <p>
-        @Html.DisplayFor(modelItem => menuItem.Description)
-    </p>
-    <p>
-        <strong>@Html.DisplayFor(modelItem => menuItem.Price)</strong>
-    </p>
-
-}
-
+</div>
