@@ -496,12 +496,12 @@ A lenyílómező adatszükséglete a megjelenítéshez:
 A lenyílómező adatszükséglete az adatrögzítéshez:
 - a kiválasztott lehetőség
 
-
-
-
 ### 3. Házi feladat
-- az eredeti táblázatból ellátni az Indexet a megfelelő adatokkal
-
+- az eredeti táblázatból ellátni az MenuController.Index View-t a megfelelő adatokkal
+  - betölteni a menuItem listát a Category mezővel
+  - Készíteni egy CategoryModel-t
+  - Készíteni egy CategoryModel gyűjteményt az adatbázisból olvasott MenuItem listából
+  - Minden CategoryModel-en legye egy MenuItem gyűjtemény, és töltsük fel ezt is ugyanabból az adatforrásból
 
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
