@@ -46,7 +46,20 @@ namespace OopRestaurant201807.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            var menuItem = new MenuItem();
+            //a lenyílómező választható adatainak a feltöltése
+
+            FillAssignableCategories(menuItem);
+
+            return View(menuItem);
+        }
+
+        private void FillAssignableCategories(MenuItem menuItem)
+        {
+            foreach (var category in db.Categories.ToList())
+            {
+                menuItem.AssignableCategories.Add(new SelectListItem() { Text = category.Name, Value = category.Id.ToString() });
+            }
         }
 
         // POST: MenuItems/Create
@@ -55,15 +68,18 @@ namespace OopRestaurant201807.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Price")] MenuItem menuItem)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Price,CategoryId")] MenuItem menuItem)
         {
+            //todo: a validációt javítani kell a bejövő adattal 
             if (ModelState.IsValid)
             {
+                //a menuItem.Category kitöltése
                 db.MenuItems.Add(menuItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            FillAssignableCategories(menuItem);
             return View(menuItem);
         }
 

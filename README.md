@@ -448,12 +448,55 @@ Categories
 
 ### 8. Feladat
 - [ ] kitenni a kategóriát a MenuItem-re is
-  - [ ] egyben biztosítani, hogy kategória nélküli étel ne kerüljön az adatbázisba
+  - [X] egyben biztosítani, hogy kategória nélküli étel ne kerüljön az adatbázisba
     ezt a Required annotációval lehet elérni. Problémák:
         - [ ] ha már vannak adatok, amik nem illeszkednek ehhez a megszorításhoz, nem fog lefutni a migráció
           - vagy javítjuk az adatokat az adatbázisban (eltüntetjük a null-t). Mivel ez kézi megoldás, és kívül van migrációs lépések automatizmusán, minden adatbázison kézzel kell külön megoldani.
           - vagy megadjuk az adott mező alapértelmezett értékét 
         - [ ] ha van le nem futó migrációs lépésünk, akkor az alkalmazásunk sem fog lefutni, addig, amíg az alkalmazás modellje és az adatbázismodell nincs szinkronban.
+  - [ ] A MenuItem felviteli űrlapra a Category választó (Lenyílőmező) megjelenítése
+
+```
++-------------------------------------------------+                     +---------------------------------------+
+|                                                 | A választott+-----> |                                       |
+|                                                 | érték               +---------------------------------------+
+|                                                 |                     |                                       |
+|                                                 |                     |   +--------------------------------+  |
+|                +----------------------+         |                     |                                       |
+|          Name: |                      |         |                     |   +--------------------------------+  |
+|                +----------------------+         | A lehetséges        |                                       |
+|                +----------------------+         | értékek     +-----> |   +--------------------------------+  |
+|   Description: |                      |         | felsorolása         |                                       |
+|                +----------------------+         |                     |   +--------------------------------+  |
+|                +----------------------+         |                     |                                       |
+|         Price: |                      |         |                     |   +--------------------------------+  |
+|                +----------------------+         |                     |                                       |
+|                                                 |                     |                                       |
+|                                                 |                     |                                       |
+|                +----------------------+---+     |                     |                                       |
+|      Category: |                      |   |     |                     |                                       |
+|                +----------------------+---+     |                     |                                       |
+|                                                 |                     |                                       |
+|                                                 |                     |                                       |
+|                                                 |                     |                                       |
+|                                                 |                     |                                       |
+|    +---------+                  +---------+     |                     |                                       |
+|    |  Save   |                  | Cancel  |     |                     |                                       |
+|    +---------+                  +---------+     |                     |                                       |
+|                                                 |                     +---------------------------------------+
+|                                                 |
+|                                                 |
+|                                                 |
++-------------------------------------------------+
+```
+
+A lenyílómező adatszükséglete a megjelenítéshez:
+- lehetséges választási lehetőségek
+- a kiválasztott lehetőség
+A lenyílómező adatszükséglete az adatrögzítéshez:
+- a kiválasztott lehetőség
+
+
 
 
 ### 3. Házi feladat

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace OopRestaurant201807.Models
 {
@@ -11,6 +13,12 @@ namespace OopRestaurant201807.Models
     /// </summary>
     public class MenuItem
     {
+
+        public MenuItem()
+        {
+            AssignableCategories = new List<SelectListItem>();
+        }
+
         /// <summary>
         /// Ez a korábbi ismereteink szerint kötelező
         /// PK: Primary Key: elsődleges kulcs
@@ -38,5 +46,17 @@ namespace OopRestaurant201807.Models
         /// </summary>
         [Required] // ezzel biztosítjuk, hogy a táblában a távoli kulcs mindig legyen kitöltve.
         public Category Category { get; set; }
+
+        #region Csak a nézetekre kerülő propertyk
+        /// <summary>
+        /// ezzel jelzem a CodeFirst-nek, hogy nem akarom adatbázisban látni, 
+        /// így nem foglalkozik majd vele
+        /// </summary>
+        [NotMapped]
+        public List<SelectListItem> AssignableCategories { get; set; }
+
+        [NotMapped]
+        public int CategoryId { get; set; }
+        #endregion Csak a nézetekre kerülő propertyk
     }
 }
