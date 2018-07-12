@@ -1,50 +1,40 @@
-﻿@model IEnumerable<OopRestaurant201807.Models.MenuItem>
+﻿@model IEnumerable<OopRestaurant201807.Models.Category>
 
 @{
     ViewBag.Title = "Index";
-    var category = "";
-    //például ezzel leválogathatom a kategórianeveket, egy sorba egy kategianév kerül
-    //var categories = Model.Select(x => x.Category.Name).ToList().Dictinct();
 }
 
 <h2>Menu</h2>
 
 <div class="panel-group" id="menu">
-    @foreach (var menuItem in Model)
+    @foreach (var category in Model)
     {
-
-        if (category != menuItem.Category.Name)
-        { //új kategória: megjegyezni és kiírni
-            category = menuItem.Category.Name;
-
-            //a kategória külön becsukható panelen jelenik meg
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#menu" href="#collapse@(menuItem.Category.Id)">
-                            @Html.DisplayFor(modelItem => menuItem.Category.Name)
-                        </a>
-                    </h3>
-                </div>
-                <div id="collapse@(menuItem.Category.Id)" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                        @*Ez egy kerülendő megoldás, ugyanazt a táblázatot még egyszer bejárjuk, immár szűrve*@
-                        @foreach (var innerMenuItem in Model.Where(x => x.Category.Name == category))
-                        {
-                            <h4>
-                                @Html.DisplayFor(modelItem => innerMenuItem.Name)
-                            </h4>
-                            <p>
-                                @Html.DisplayFor(modelItem => innerMenuItem.Description)
-                            </p>
-                            <p>
-                                <strong>@Html.DisplayFor(modelItem => innerMenuItem.Price)</strong>
-                            </p>
-                        }
-                    </div>
+        //a kategória külön becsukható panelen jelenik meg
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#menu" href="#collapse@(category.Id)">
+                        @Html.DisplayFor(modelItem => category.Name)
+                    </a>
+                </h3>
+            </div>
+            <div id="collapse@(category.Id)" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    @foreach (var innerMenuItem in category.MenuItems)
+                    {
+                        <h4>
+                            @Html.DisplayFor(modelItem => innerMenuItem.Name)
+                        </h4>
+                        <p>
+                            @Html.DisplayFor(modelItem => innerMenuItem.Description)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayFor(modelItem => innerMenuItem.Price)</strong>
+                        </p>
+                    }
                 </div>
             </div>
-        }
+        </div>
     }
 
 </div>
