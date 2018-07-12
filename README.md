@@ -431,3 +431,26 @@ linq információk ezzel a google kereséssel: **linq 101**
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
 - [ ] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
+
+
+### 6. feladat
+- [ ] bootstrap felfedezés: a példa étlapon szereplő kinyíló és becsukódó panel megvalósítása
+  - [ ] megfelelő adatok előállítása a nézet számára: 
+    - [ ] kell egy category lista, 
+    - [ ] és az egyes category-hoz tartozó menuItem-ek listája
+
+Megoldási lehetőségek:
+- a kapott adatokat késznek véve elkezdünk faragni a Controllerben, hogy a nézetbe megfelelő adatok kerüljenek
+- átalakítjuk az adatforrást, hogy eleve a megfelelő adatokat kapjuk.
+
+Categories
+- Hideg előételek
+  - Tengeri hal trió
+- Meleg előételek
+  - Hirtelen sült fogasderék illatos erdei gombákkal 
+- Levesek
+  - Borjúesszencia
+  - Szarvasgomba cappuccino
+
+### 3. Házi feladat
+- az eredeti táblázatból ellátni az Indexet a megfelelő adatokkal

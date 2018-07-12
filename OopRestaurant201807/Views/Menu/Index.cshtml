@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
     var category = "";
+    //például ezzel leválogathatom a kategórianeveket, egy sorba egy kategianév kerül
+    //var categories = Model.Select(x => x.Category.Name).ToList().Dictinct();
 }
 
 <h2>Menu</h2>
@@ -30,13 +32,13 @@
                         @foreach (var innerMenuItem in Model.Where(x => x.Category.Name == category))
                         {
                             <h4>
-                                @Html.DisplayFor(modelItem => menuItem.Name)
+                                @Html.DisplayFor(modelItem => innerMenuItem.Name)
                             </h4>
                             <p>
-                                @Html.DisplayFor(modelItem => menuItem.Description)
+                                @Html.DisplayFor(modelItem => innerMenuItem.Description)
                             </p>
                             <p>
-                                <strong>@Html.DisplayFor(modelItem => menuItem.Price)</strong>
+                                <strong>@Html.DisplayFor(modelItem => innerMenuItem.Price)</strong>
                             </p>
                         }
                     </div>
