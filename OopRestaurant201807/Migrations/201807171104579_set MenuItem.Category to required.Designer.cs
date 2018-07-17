@@ -7,13 +7,13 @@ namespace OopRestaurant201807.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addrequiredtoMenuItemCategory : IMigrationMetadata
+    public sealed partial class setMenuItemCategorytorequired : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addrequiredtoMenuItemCategory));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(setMenuItemCategorytorequired));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807120933306_add required to MenuItem.Category"; }
+            get { return "201807171104579_set MenuItem.Category to required"; }
         }
         
         string IMigrationMetadata.Source

@@ -47,5 +47,12 @@ namespace OopRestaurant201807.Models
             return new ApplicationDbContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<MenuItem>().Property(x => x.Category).HasDefaultValueSql();
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

@@ -546,10 +546,13 @@ SQL Server Profiler indítása: SQL Server management Studio\Tools\SQL Server Pr
 
 
 ### 10. feladat
-- [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
-
+- [X] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
+- [X] a defaultValue és a notnull rossz sorrendjének a javítása
+      a probléma gyökere az, hogy MIUTÁN a Required annotációt kiadtuk, csatoltuk a defaultValue beállítást EGY ÉS UGYANAZON migrációs lépésben. Ezzel az SQL generátorra bíztuk, hogy milyen sorrendben generálja őket. Szedjük szét a két lépést:
+    - [X] adjuk meg a default value értékét a Category_Id mezőnek MAJD
+    - [X] állítsuk be, hogy ne lehessen null az értéke_
 
 ### Kérdések
 - [X] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
-- [ ] a defaultValue és a notnull rossz sorrendjének a javítása
-
+- [ ] hogy lehet a felhasználókat rögzíteni a Seed-ben
+- [ ] hogy kell javítani a Seed-et ahhoz, hogy ne duplázza az adatokat
