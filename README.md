@@ -454,7 +454,11 @@ Categories
           - vagy javítjuk az adatokat az adatbázisban (eltüntetjük a null-t). Mivel ez kézi megoldás, és kívül van migrációs lépések automatizmusán, minden adatbázison kézzel kell külön megoldani.
           - vagy megadjuk az adott mező alapértelmezett értékét 
         - [ ] ha van le nem futó migrációs lépésünk, akkor az alkalmazásunk sem fog lefutni, addig, amíg az alkalmazás modellje és az adatbázismodell nincs szinkronban.
-  - [X] A MenuItem felviteli űrlapra a Category választó (Lenyílőmező) megjelenítése
+  - [X] A MenuItem felviteli űrlapra a Category választó (Lenyílómező) megjelenítése
+  - [X] A MenuItem edit képernyőre kitenni a Category választót
+  - [ ] A bejövő adatokat menteni
+  - [ ] A MenuItem Details képernyőre kitenni a Category értékét
+  - [ ] A MenuItem Delete képernyőre kitenni a Category értékét
 
 ```
 +-------------------------------------------------+                     +---------------------------------------+

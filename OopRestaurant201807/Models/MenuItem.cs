@@ -51,10 +51,15 @@ namespace OopRestaurant201807.Models
         /// <summary>
         /// ezzel jelzem a CodeFirst-nek, hogy nem akarom adatbázisban látni, 
         /// így nem foglalkozik majd vele
+        /// 
+        /// Ez a property tartalmazza a lenyílőmező lehetséges választható adatait
         /// </summary>
         [NotMapped]
         public List<SelectListItem> AssignableCategories { get; set; }
 
+        /// <summary>
+        /// Itt tároljuk a lenyílómező aktuálisan kiválasztott Category példány azonosítóját
+        /// </summary>
         [NotMapped]
         public int CategoryId { get; set; }
         #endregion Csak a nézetekre kerülő propertyk

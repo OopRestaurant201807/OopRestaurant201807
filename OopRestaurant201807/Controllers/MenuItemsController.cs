@@ -54,6 +54,10 @@ namespace OopRestaurant201807.Controllers
             return View(menuItem);
         }
 
+        /// <summary>
+        /// A Category választó lenyílómező adattartalmát betölti a menuItem.AssignableCategories property-be
+        /// </summary>
+        /// <param name="menuItem">az adatmodell, ahova a lenyíló adattartalmát be kell tölteni</param>
         private void FillAssignableCategories(MenuItem menuItem)
         {
             foreach (var category in db.Categories.ToList())
@@ -112,6 +116,15 @@ namespace OopRestaurant201807.Controllers
             {
                 return HttpNotFound();
             }
+
+            //lenyílő mező adatainak kezelése
+            //ha létezik az id azonosítójú menuItem, csak akkor tudjuk kitölteni a lenyíló adatait
+            //menuItem.AssignableCategories feltöltése
+            FillAssignableCategories(menuItem);
+
+            //menuItem.CategoryId feltöltése
+            menuItem.CategoryId = menuItem.Category.Id;
+
             return View(menuItem);
         }
 
