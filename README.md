@@ -545,8 +545,11 @@ Az adatbázis és az EntityFramework "beszélgetéseibe" az SQL Server Profilerr
 SQL Server Profiler indítása: SQL Server management Studio\Tools\SQL Server Profiler
 
 
-### Kérdések
+### 10. feladat
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?
-- [ ] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
-- [ ] a devaultValue és a notnull rossz sorrendjének a javítása
+
+
+### Kérdések
+- [X] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
+- [ ] a defaultValue és a notnull rossz sorrendjének a javítása
 
