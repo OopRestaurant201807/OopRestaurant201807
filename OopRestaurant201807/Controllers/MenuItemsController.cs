@@ -134,8 +134,25 @@ namespace OopRestaurant201807.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Price")] MenuItem menuItem)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Price,CategoryId")] MenuItem menuItem)
         {
+            //a menuItem.Category kitöltése
+            //keressük ki a megfelelő kategóriát az adatbázisból
+            var category = db.Categories.Find(menuItem.CategoryId);
+
+            //töltsük ki a modellünket ezzel a kategóriával
+            menuItem.Category = category;
+
+            //a validáció a modell átvételekor megtörtént, automatikusan nem frissül
+            //ezért nekünk kell újra validálnunk
+
+            //a TryValidateModel nem törli az előző validálás hibáit, így 
+            //a teljes újravalidáláshoz először törölni kell ezeket
+            ModelState.Clear();
+
+            //immár tiszta lappal indulva validálunk
+            var isValid = TryValidateModel(menuItem);
+
             if (ModelState.IsValid)
             {
                 db.Entry(menuItem).State = EntityState.Modified;
