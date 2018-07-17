@@ -447,7 +447,7 @@ Categories
   - Szarvasgomba cappuccino
 
 ### 8. Feladat
-- [ ] kitenni a kategóriát a MenuItem-re is
+- [X] kitenni a kategóriát a MenuItem-re is
   - [X] egyben biztosítani, hogy kategória nélküli étel ne kerüljön az adatbázisba
     ezt a Required annotációval lehet elérni. Problémák:
         - [ ] ha már vannak adatok, amik nem illeszkednek ehhez a megszorításhoz, nem fog lefutni a migráció
@@ -504,11 +504,11 @@ A lenyílómező adatszükséglete az adatrögzítéshez:
   - Minden CategoryModel-en legye egy MenuItem gyűjtemény, és töltsük fel ezt is ugyanabból az adatforrásból
 
 ### 9. feladat (8. folytatása)
-- [ ] kitenni a kategóriát a MenuItem-re is
+- [X] kitenni a kategóriát a MenuItem-re is
   - [X] A MenuItem edit képernyőre kitenni a Category választót
   - [X] A bejövő adatokat menteni
-  - [ ] A MenuItem Details képernyőre kitenni a Category értékét
-  - [ ] A MenuItem Delete képernyőre kitenni a Category értékét
+  - [X] A MenuItem Details képernyőre kitenni a Category értékét
+  - [X] A MenuItem Delete képernyőre kitenni a Category értékét
 
 ```
                                <-------------------------------------------------^

@@ -33,6 +33,7 @@ namespace OopRestaurant201807.Controllers
             {
                 return HttpNotFound();
             }
+            GetMenuItemEntryAndLoadCategory(menuItem);
             return View(menuItem);
         }
         #endregion Nyilvános Action-ök
@@ -140,19 +141,7 @@ namespace OopRestaurant201807.Controllers
             //keressük ki a megfelelő kategóriát az adatbázisból
             var category = db.Categories.Find(menuItem.CategoryId);
 
-            //ezzel bemutatjuk a menuItem-et az EntityFramework-nak
-            //innen fogja tudni majd betölteni a navigációs property-t is
-            db.MenuItems.Attach(menuItem);
-
-            //ezzel az adatok mentését készítjük elő
-            var menuItemEntry = db.Entry(menuItem);
-
-            //betöltjük a navigációs property-t, ezzel egyben
-            //az EntityFramework tudomást szerez a létezéséről
-            //és a változását már el is menti
-            //figyelem: ha korábban kitöltenénk a Category property-t, akkor ez NEM CSINÁL SEMMIT!!!
-            menuItemEntry.Reference(x => x.Category)
-                         .Load();
+            var menuItemEntry = GetMenuItemEntryAndLoadCategory(menuItem);
 
             //beállítjuk a megfelelő értéket 
             menuItem.Category = category;
@@ -179,6 +168,29 @@ namespace OopRestaurant201807.Controllers
             return View(menuItem);
         }
 
+        /// <summary>
+        /// Elkéri a dbEntry kapcsolatot az EntityFramework-től és betölti a Category navigációs property-t
+        /// </summary>
+        /// <param name="menuItem">a betöltendő menuItem</param>
+        /// <returns></returns>
+        private System.Data.Entity.Infrastructure.DbEntityEntry<MenuItem> GetMenuItemEntryAndLoadCategory(MenuItem menuItem)
+        {
+            //ezzel bemutatjuk a menuItem-et az EntityFramework-nak
+            //innen fogja tudni majd betölteni a navigációs property-t is
+            db.MenuItems.Attach(menuItem);
+
+            //ezzel az adatok mentését készítjük elő
+            var menuItemEntry = db.Entry(menuItem);
+
+            //betöltjük a navigációs property-t, ezzel egyben
+            //az EntityFramework tudomást szerez a létezéséről
+            //és a változását már el is menti
+            //figyelem: ha korábban kitöltenénk a Category property-t, akkor ez NEM CSINÁL SEMMIT!!!
+            menuItemEntry.Reference(x => x.Category)
+                         .Load();
+            return menuItemEntry;
+        }
+
         // GET: MenuItems/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)
@@ -192,6 +204,10 @@ namespace OopRestaurant201807.Controllers
             {
                 return HttpNotFound();
             }
+
+            //ha nem akarom nem veszem át a visszatérési értéket
+            GetMenuItemEntryAndLoadCategory(menuItem);
+
             return View(menuItem);
         }
 
