@@ -540,6 +540,9 @@ A lenyílómező adatszükséglete az adatrögzítéshez:
 
 ```
 
+Az adatbázis és az EntityFramework "beszélgetéseibe" az SQL Server Profilerrel tudunk belesni. 
+
+SQL Server Profiler indítása: SQL Server management Studio\Tools\SQL Server Profiler
 
 
 ### Kérdések
