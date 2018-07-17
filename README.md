@@ -455,10 +455,6 @@ Categories
           - vagy megadjuk az adott mező alapértelmezett értékét 
         - [ ] ha van le nem futó migrációs lépésünk, akkor az alkalmazásunk sem fog lefutni, addig, amíg az alkalmazás modellje és az adatbázismodell nincs szinkronban.
   - [X] A MenuItem felviteli űrlapra a Category választó (Lenyílómező) megjelenítése
-  - [X] A MenuItem edit képernyőre kitenni a Category választót
-  - [ ] A bejövő adatokat menteni
-  - [ ] A MenuItem Details képernyőre kitenni a Category értékét
-  - [ ] A MenuItem Delete képernyőre kitenni a Category értékét
 
 ```
 +-------------------------------------------------+                     +---------------------------------------+
@@ -506,6 +502,45 @@ A lenyílómező adatszükséglete az adatrögzítéshez:
   - Készíteni egy CategoryModel-t
   - Készíteni egy CategoryModel gyűjteményt az adatbázisból olvasott MenuItem listából
   - Minden CategoryModel-en legye egy MenuItem gyűjtemény, és töltsük fel ezt is ugyanabból az adatforrásból
+
+### 9. feladat (8. folytatása)
+- [ ] kitenni a kategóriát a MenuItem-re is
+  - [X] A MenuItem edit képernyőre kitenni a Category választót
+  - [X] A bejövő adatokat menteni
+  - [ ] A MenuItem Details képernyőre kitenni a Category értékét
+  - [ ] A MenuItem Delete képernyőre kitenni a Category értékét
+
+```
+                               <-------------------------------------------------^
+                               |                                                 |
+    Adatbázis                  |                        EntityFramework          |                     Adatmodell
++---------------------------------------------+       +---------------------------------------+      +-----------------------------+
+|                              |              |       | +----------------------------------+  |      |     Attach                  |
+|                              |              |       | | DbContext.MenuItems              |  | <--------------------------^       |
+|                              |              |       | +----------------------------------+  |      |    MenuItem         |       |
+|                              |              |       |      MenuItemEntry                    |      |  +------------------+-+     |
+|                              |              |       |     +----------------+     Entry      |      |  |                    |     |
+|                              v              |       |     |                | <------------------------+                    |     |
+|                                             |       |     |                |                |      |  |                    |     |
+|    Categories              MenuItems        |       |     |                |                |      |  |                    |     |
+|  +-------------+         +-------------+    |       |     |                |                |      |  |                    |     |
+|  |             |         |             |    |       |     |                |                |      |  |   Category         |     |
+|  |             |         |             |    |       |     |                |                |      |  |  +---------------+ |     |
+|  +-------------+         +-------------+    |       |     |                |                |      |  |  |               | |     |
+|  | Category    | <-----+ | MenuItem    |    |       |     |                |                |      |  |  |               | |     |
+|  +-------------+         +-------------+    |       |     |                |                |      |  |  |               | |     |
+|  |             |         |             |    |       |     +-+--------------+                |      |  |  +---------------+ |     |
+|  |             |         |             |    |       |       |                               |      |  |                    |     |
+|  +-------------+         +-------------+    |       |       | Reference                     |      |  |                    |     |
+|                                             |       |       | Load                          |      |  |                    |     |
+|                                             |       |       |          +-----------+        |      |  +--------------------+     |
+|                        <----SaveChanges-------------+       +--------> | Category  |        |      |                             |
+|                                             |       |                  +-----------+        |      |                             |
++---------------------------------------------+       +---------------------------------------+      +-----------------------------+
+
+```
+
+
 
 ### Kérdések
 - [ ] hogy lehet az üres adatbázist feltölteni tesztadatokkal?

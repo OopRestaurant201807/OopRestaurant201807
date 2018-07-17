@@ -140,7 +140,21 @@ namespace OopRestaurant201807.Controllers
             //keressük ki a megfelelő kategóriát az adatbázisból
             var category = db.Categories.Find(menuItem.CategoryId);
 
-            //töltsük ki a modellünket ezzel a kategóriával
+            //ezzel bemutatjuk a menuItem-et az EntityFramework-nak
+            //innen fogja tudni majd betölteni a navigációs property-t is
+            db.MenuItems.Attach(menuItem);
+
+            //ezzel az adatok mentését készítjük elő
+            var menuItemEntry = db.Entry(menuItem);
+
+            //betöltjük a navigációs property-t, ezzel egyben
+            //az EntityFramework tudomást szerez a létezéséről
+            //és a változását már el is menti
+            //figyelem: ha korábban kitöltenénk a Category property-t, akkor ez NEM CSINÁL SEMMIT!!!
+            menuItemEntry.Reference(x => x.Category)
+                         .Load();
+
+            //beállítjuk a megfelelő értéket 
             menuItem.Category = category;
 
             //a validáció a modell átvételekor megtörtént, automatikusan nem frissül
@@ -155,7 +169,10 @@ namespace OopRestaurant201807.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(menuItem).State = EntityState.Modified;
+                //ez jelzi az EF-nek, hogy módosítottuk a menuItem-et
+                menuItemEntry.State = EntityState.Modified;
+
+                //ezért ez elmenti az adatokat
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
