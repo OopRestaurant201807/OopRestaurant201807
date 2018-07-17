@@ -70,10 +70,26 @@ namespace OopRestaurant201807.Controllers
         [Authorize]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Price,CategoryId")] MenuItem menuItem)
         {
-            //todo: a validációt javítani kell a bejövő adattal 
+            //a menuItem.Category kitöltése
+            //keressük ki a megfelelő kategóriát az adatbázisból
+            var category = db.Categories.Find(menuItem.CategoryId);
+
+            //töltsük ki a modellünket ezzel a kategóriával
+            menuItem.Category = category;
+
+            //a validáció a modell átvételekor megtörtént, automatikusan nem frissül
+            //ezért nekünk kell újra validálnunk
+
+            //a TryValidateModel nem törli az előző validálás hibáit, így 
+            //a teljes újravalidáláshoz először törölni kell ezeket
+            ModelState.Clear();
+
+            //immár tiszta lappal indulva validálunk
+            var isValid = TryValidateModel(menuItem);
+
+            //todo: az előző sort ide integrálhatjuk
             if (ModelState.IsValid)
             {
-                //a menuItem.Category kitöltése
                 db.MenuItems.Add(menuItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
