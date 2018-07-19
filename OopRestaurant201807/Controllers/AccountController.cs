@@ -449,7 +449,7 @@ namespace OopRestaurant201807.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Menu");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
