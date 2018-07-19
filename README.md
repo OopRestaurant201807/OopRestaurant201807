@@ -556,3 +556,4 @@ SQL Server Profiler indítása: SQL Server management Studio\Tools\SQL Server Pr
 - [X] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
 - [ ] hogy lehet a felhasználókat rögzíteni a Seed-ben
 - [ ] hogy kell javítani a Seed-et ahhoz, hogy ne duplázza az adatokat
+- [ ] a lenyíló mező alapértelmezett értéke Create esetén legyen egy ki nem választott érték.
