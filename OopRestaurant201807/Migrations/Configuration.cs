@@ -90,6 +90,24 @@ namespace OopRestaurant201807.Migrations
                 Category = category2
             });
 
+
+
+
+            //helyszínek feltöltése
+            var loc1 = new Location { Name = "Nemdohányzó terem", IsNonSmoking = true };
+            var loc2 = new Location { Name = "Dohányzó terem", IsNonSmoking = false };
+            var loc3 = new Location { Name = "Terasz", IsNonSmoking = false };
+            context.Locations.AddOrUpdate(x => x.Name, loc1, loc2, loc3);
+
+            context.Tables.AddOrUpdate(x => x.Name,
+                new Table { Name = "1. asztal", Location = loc1 },
+                new Table { Name = "2. asztal", Location = loc1 },
+                new Table { Name = "3. asztal", Location = loc2 },
+                new Table { Name = "4. asztal", Location = loc2 },
+                new Table { Name = "5. asztal", Location = loc3 },
+                new Table { Name = "6. asztal", Location = loc3 }
+            );
+            
             // felhasználó rögzítése
             // figyelem: nem rögzítünk adatbázisba közvetlenül adatot, 
             //hanem az Identity által kínált szolgáltatás(oka)t használjuk

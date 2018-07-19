@@ -42,6 +42,9 @@ namespace OopRestaurant201807.Models
         /// </summary>
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<Table> Tables { get; set; }
+        public DbSet<Location> Locations { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

@@ -623,6 +623,5 @@ a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésr�
 - Menu, MenuItem és Category többi oldalak magyarítása
 - lenyíló másféleképpen: FillAssignableCategories vegyen föl egy adatbázisban nem létező kategóriát, és ez legyen az első elem
 
-
 ### Kérdések
 - [DefaultValue] //todo: ez hogy működik?
