@@ -592,7 +592,7 @@ Az ASP.NET Identity adatkezelése több rétegből áll:
 ### 11. feladat
 - [ ] Magyar nyelvű alkalmazást készítünk
   - [X] Bejelentkező és regisztrációs oldal magyarítása
-  - [ ] A menuItem idex oldal magyarítása
+  - [X] A menuItem idex oldal magyarítása
   - [ ] Alapértelmezett kezdőoldal legyen a Menu nézet
 - [ ] a lenyíló mező alapértelmezett értéke Create esetén legyen egy ki nem választott érték.
 - [ ] a lenyíló mező formázásának a javítása.
