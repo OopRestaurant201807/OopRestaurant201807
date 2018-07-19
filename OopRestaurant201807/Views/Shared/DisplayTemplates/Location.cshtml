@@ -1,0 +1,44 @@
+﻿@model OopRestaurant201807.Models.Location
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.IsNonSmoking)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.IsNonSmoking)
+    </dd>
+
+</dl>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var table in Model.Tables)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => table.Name)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>*@
+        </tr>
+    }
+
+</table>

@@ -618,10 +618,22 @@ A hiba oka tehát az, hogy ez van
 ```
 a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésről másoltuk, ahol **additionalViewData** paraméterként volt megadva. De a @Html.DropDownListFor() pedig **htmlAttributes** paramétert vár, ami más formátumú.
 
+### 12. feladat
+- [X] Asztalok és helyszínek modellje és megjelenítése
+- [X] DisplayTemplate: a Details nézet módosítását szeretném a Delete nézeten is megjeleníteni.
+  - [X] A \View\Shared\DisplayTemplates mappában lévő cshtml-ek a felhasználható alkotóelemek
+  - [X] Ezeket több helyről is meg lehet hivatkozni.
+
+
 ### 5. házi feladat
 - a login oldal jobboldalának a magyarítása
 - Menu, MenuItem és Category többi oldalak magyarítása
 - lenyíló másféleképpen: FillAssignableCategories vegyen föl egy adatbázisban nem létező kategóriát, és ez legyen az első elem
+- 
+
+
+
+
 
 ### Kérdések
 - [DefaultValue] //todo: ez hogy működik?
