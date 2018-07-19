@@ -108,40 +108,43 @@ namespace OopRestaurant201807.Migrations
             var store = new UserStore<ApplicationUser>(context);
             var manager = new ApplicationUserManager(store);
 
-            //itt megadjuk a felhasználó jelszavát, és 
-            //így az Identity generálja az adatbázisba írt HASH kódot
-            var result = manager.Create(user, "aA123456!");
-            if (!result.Succeeded)
-            {
+            //ellenõrizni kell, hogy létezik-e már ilyen felhasználó?
+            var userExists = manager.FindByEmail(user.Email);
+            if (null==userExists)
+            { // még nincs ilyen felhasználó, rögzítsük
+              //itt megadjuk a felhasználó jelszavát, és 
+              //így az Identity generálja az adatbázisba írt HASH kódot
+                var result = manager.Create(user, "123456");
+                if (!result.Succeeded)
+                {
 
-                ////a legrészletesebb megoldás
-                //var errorMessage = "";
-                //foreach (var error in result.Errors)
-                //{
-                //    if (string.IsNullOrEmpty(errorMessage))
-                //    {
-                //        errorMessage = error;
-                //    }
-                //    else
-                //    {
-                //        errorMessage = errorMessage + ", " + error;
-                //    }
-                //}
+                    ////a legrészletesebb megoldás
+                    //var errorMessage = "";
+                    //foreach (var error in result.Errors)
+                    //{
+                    //    if (string.IsNullOrEmpty(errorMessage))
+                    //    {
+                    //        errorMessage = error;
+                    //    }
+                    //    else
+                    //    {
+                    //        errorMessage = errorMessage + ", " + error;
+                    //    }
+                    //}
 
-                ////elõzõ megoldás tömörítve
-                //foreach (var error in result.Errors)
-                //{
-                //    //feltételes operátor használata
-                //    errorMessage = errorMessage
-                //        + (string.IsNullOrEmpty(errorMessage) ? "" : ",")
-                //        + error;
-                //}
+                    ////elõzõ megoldás tömörítve
+                    //foreach (var error in result.Errors)
+                    //{
+                    //    //feltételes (ternáris) operátor használata
+                    //    errorMessage = errorMessage
+                    //        + (string.IsNullOrEmpty(errorMessage) ? "" : ",")
+                    //        + error;
+                    //}
 
-                //a legtömörebb megoldás pedig a string osztály beépített Join föggvénye
-                throw new Exception(string.Join(",", result.Errors));
+                    //a legtömörebb megoldás pedig a string osztály beépített Join föggvénye
+                    throw new Exception(string.Join(",", result.Errors));
+                }
             }
-
-
         }
     }
 }

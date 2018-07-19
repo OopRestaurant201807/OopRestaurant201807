@@ -555,7 +555,7 @@ SQL Server Profiler indítása: SQL Server management Studio\Tools\SQL Server Pr
 ### Kérdések
 - [X] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
 - [X] hogy kell javítani a Seed-et ahhoz, hogy ne duplázza az adatokat
-- [ ] hogy lehet a felhasználókat rögzíteni a Seed-ben
+- [X] hogy lehet a felhasználókat rögzíteni a Seed-ben
 
 Az ASP.NET Identity adatkezelése több rétegből áll:
 ```
@@ -583,7 +583,6 @@ Az ASP.NET Identity adatkezelése több rétegből áll:
 |                                                             |
 |                                                             |
 +-------------------------------------------------------------+
-
 ```
 
 - A UserStore felel az adatok karbantartásáért
