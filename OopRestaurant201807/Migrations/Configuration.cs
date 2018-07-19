@@ -1,5 +1,7 @@
 namespace OopRestaurant201807.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using OopRestaurant201807.Models;
     using System;
     using System.Data.Entity;
@@ -87,6 +89,58 @@ namespace OopRestaurant201807.Migrations
                 Price = 5000,
                 Category = category2
             });
+
+            // felhasználó rögzítése
+            // figyelem: nem rögzítünk adatbázisba közvetlenül adatot, 
+            //hanem az Identity által kínált szolgáltatás(oka)t használjuk
+
+            var user = new ApplicationUser
+            {
+                UserName = "gabor.plesz@gmail.com",
+                Email = "gabor.plesz@gmail.com",
+            };
+
+            // UserStore: ez felel az adatok rögzítéséért
+            //UserManager: a programozási felület.
+
+            //context <- UserStore <- UserManager
+
+            var store = new UserStore<ApplicationUser>(context);
+            var manager = new ApplicationUserManager(store);
+
+            //itt megadjuk a felhasználó jelszavát, és 
+            //így az Identity generálja az adatbázisba írt HASH kódot
+            var result = manager.Create(user, "aA123456!");
+            if (!result.Succeeded)
+            {
+
+                ////a legrészletesebb megoldás
+                //var errorMessage = "";
+                //foreach (var error in result.Errors)
+                //{
+                //    if (string.IsNullOrEmpty(errorMessage))
+                //    {
+                //        errorMessage = error;
+                //    }
+                //    else
+                //    {
+                //        errorMessage = errorMessage + ", " + error;
+                //    }
+                //}
+
+                ////elõzõ megoldás tömörítve
+                //foreach (var error in result.Errors)
+                //{
+                //    //feltételes operátor használata
+                //    errorMessage = errorMessage
+                //        + (string.IsNullOrEmpty(errorMessage) ? "" : ",")
+                //        + error;
+                //}
+
+                //a legtömörebb megoldás pedig a string osztály beépített Join föggvénye
+                throw new Exception(string.Join(",", result.Errors));
+            }
+
 
         }
     }

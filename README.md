@@ -556,4 +556,40 @@ SQL Server Profiler indítása: SQL Server management Studio\Tools\SQL Server Pr
 - [X] az, hogy a MenuItem.Category kitöltése nem kötelező, ez vajon jó-e nekünk?
 - [X] hogy kell javítani a Seed-et ahhoz, hogy ne duplázza az adatokat
 - [ ] hogy lehet a felhasználókat rögzíteni a Seed-ben
+
+Az ASP.NET Identity adatkezelése több rétegből áll:
+```
++-------------------------------------------------------------+
+|                                                             |
+|                                                             |
+|                                                             |
+|                                                             |
+| +-------------+   +--------------+  +-----------------+     |
+| |             |   |              |  |                 |     |
+| | Adatbázis   |   |  UserStore   |  | UserManager     | <------+
+| |             |   |              |  |                 |     |
+| |             |   |              |  |                 |     |
+| |             |   |         <-------------+           |     |
+| |             |   |              |  |                 |     |
+| |             |   |              |  |                 |     |
+| |      <----------------+        |  |                 |     |
+| |             |   |              |  |                 |     |
+| |             |   |              |  |                 |     |
+| |             |   |              |  |                 |     |
+| +-------------+   +--------------+  +-----------------+     |
+|                                                             |
+|                                                             |
+|                                                             |
+|                                                             |
+|                                                             |
++-------------------------------------------------------------+
+
+```
+
+- A UserStore felel az adatok karbantartásáért
+- A UserManager pedig az a felület, amit a programozó használhat
+
+
+
+
 - [ ] a lenyíló mező alapértelmezett értéke Create esetén legyen egy ki nem választott érték.
