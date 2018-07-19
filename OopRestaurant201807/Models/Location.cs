@@ -1,4 +1,6 @@
-﻿namespace OopRestaurant201807.Models
+﻿using System.Collections.Generic;
+
+namespace OopRestaurant201807.Models
 {
     public class Location
     {
@@ -10,5 +12,11 @@
         /// Jelzi, hogy a terem vagy terület nemdohányzó
         /// </summary>
         public bool IsNonSmoking { get; set; }
+
+        /// <summary>
+        /// A helyszínhez tartozó asztalok felsorolása
+        /// virtual: LazyLoading engedélyezése
+        /// </summary>
+        public virtual List<Table> Tables { get; set; }
     }
 }
