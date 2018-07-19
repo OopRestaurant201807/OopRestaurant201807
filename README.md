@@ -595,11 +595,34 @@ Az ASP.NET Identity adatkezelése több rétegből áll:
   - [X] A menuItem idex oldal magyarítása
   - [X] Alapértelmezett kezdőoldal legyen a Menu nézet
 - [X] a lenyíló mező alapértelmezett értéke Create esetén legyen egy ki nem választott érték.
-- [ ] a lenyíló mező formázásának a javítása.
-- [DefaultValue] //todo: ez hogy működik?
+- [X] a lenyíló mező formázásának a javítása.
 
+```html
+<select data-val="true" 
+        data-val-number="The field CategoryId must be a number." 
+        data-val-required="The CategoryId field is required." 
+        htmlattributes="{ class = form-control }" 
+        id="CategoryId" name="CategoryId">
+    <option value="">- Válassz egy lehetőséget -</option>
+    <option value="1">Hideg előételek</option>
+    <option value="2">Levesek</option>
+    <option value="3">Meleg előételek</option>
+</select>
+````
+A hiba oka tehát az, hogy ez van
+```html
+   htmlattributes="{ class = form-control }" 
+```
+```html
+   class="form-control"
+```
+a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésről másoltuk, ahol **additionalViewData** paraméterként volt megadva. De a @Html.DropDownListFor() pedig **htmlAttributes** paramétert vár, ami más formátumú.
 
 ### 5. házi feladat
 - a login oldal jobboldalának a magyarítása
 - Menu, MenuItem és Category többi oldalak magyarítása
 - lenyíló másféleképpen: FillAssignableCategories vegyen föl egy adatbázisban nem létező kategóriát, és ez legyen az első elem
+
+
+### Kérdések
+- [DefaultValue] //todo: ez hogy működik?
