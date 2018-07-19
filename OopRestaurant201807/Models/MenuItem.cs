@@ -35,8 +35,13 @@ namespace OopRestaurant201807.Models
         /// arra van szükség, hogy ne legyen korlátlan hosszú, ezért a hosszát korlátozzuk.
         /// </summary>
         [StringLength(200)]
+        [Display(Name="Fogás neve")]
         public string Name { get; set; }
+
+        [Display(Name="Leírás")]
         public string Description { get; set; }
+
+        [Display(Name="Ár")]
         public int Price { get; set; }
 
         /// <summary>
@@ -46,6 +51,7 @@ namespace OopRestaurant201807.Models
         /// </summary>
         [Required] // ezzel biztosítjuk, hogy a táblában a távoli kulcs mindig legyen kitöltve.
         //[DefaultValue] //todo: ez hogy működik?
+        [Display(Name="Kategória")]
         public Category Category { get; set; }
 
         #region Csak a nézetekre kerülő propertyk

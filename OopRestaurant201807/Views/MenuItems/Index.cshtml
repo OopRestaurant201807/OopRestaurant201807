@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<OopRestaurant201807.Models.MenuItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Fogások listája";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @if (Request.IsAuthenticated)
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Új létrehozása", "Create")
     }
 </p>
 <table class="table">
@@ -40,14 +40,14 @@
         <td>
             @if (Request.IsAuthenticated)
             {
-                <span>@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |</span>
+                <span>@Html.ActionLink("Módosítás", "Edit", new { id = item.Id }) |</span>
             }
             
-            <span>@Html.ActionLink("Details", "Details", new { id = item.Id })</span>
+            <span>@Html.ActionLink("Részletek", "Details", new { id = item.Id })</span>
 
             @if (Request.IsAuthenticated)
             {
-                <span>| @Html.ActionLink("Delete", "Delete", new { id = item.Id })</span>
+                <span>| @Html.ActionLink("Törlés", "Delete", new { id = item.Id })</span>
             }
         </td>
     </tr>
