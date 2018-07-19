@@ -55,10 +55,10 @@ namespace OopRestaurant201807.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Emlékezz rám")]
         public bool RememberMe { get; set; }
     }
 
@@ -70,14 +70,14 @@ namespace OopRestaurant201807.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A {0} legalább {2} karakter legyen.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Jelszó mégegyszer")]
+        [Compare("Password", ErrorMessage = "A megadott két jelszó nem egyezik.")]
         public string ConfirmPassword { get; set; }
     }
 

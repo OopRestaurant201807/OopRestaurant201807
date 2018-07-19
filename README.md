@@ -589,6 +589,13 @@ Az ASP.NET Identity adatkezelése több rétegből áll:
 - A UserManager pedig az a felület, amit a programozó használhat
 
 
-
-
+### 11. feladat
+- [ ] Magyar nyelvű alkalmazást készítünk
+  - [X] Bejelentkező és regisztrációs oldal magyarítása
+  - [ ] Menu, MenuItem és Category oldalak magyarítása
+  - [ ] Alapértelmezett kezdőoldal legyen a Menu nézet
 - [ ] a lenyíló mező alapértelmezett értéke Create esetén legyen egy ki nem választott érték.
+- [ ] a lenyíló mező formázásának a javítása.
+
+### 5. házi feladat
+- a login oldal jobboldalának a magyarítása
