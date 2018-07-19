@@ -29,9 +29,10 @@ namespace OopRestaurant201807.Migrations
             var category2 = new Category() { Name = "Hideg elõételek" };
             var category3 = new Category() { Name = "Meleg elõételek" };
 
-            context.Categories.AddOrUpdate(category1);
-            context.Categories.AddOrUpdate(category2);
-            context.Categories.AddOrUpdate(category3);
+
+            context.Categories.AddOrUpdate(x => x.Name, category1, category2, category3);
+            //context.Categories.AddOrUpdate(x => x.Name, category2);
+            //context.Categories.AddOrUpdate(x => x.Name, category3);
 
             //hozzuk létre az ételeket
             //Id Name    Description Price   Category_Id
@@ -42,7 +43,7 @@ namespace OopRestaurant201807.Migrations
             //8   Gundel Károly gulyáslevese 1910 NULL    3500    1
             //9   Szárított érlelt bélszín carpaccio  Öreg Trappista sajt, keserû levelek 5000    2
 
-            context.MenuItems.AddOrUpdate(new MenuItem()
+            context.MenuItems.AddOrUpdate(x=>x.Name, new MenuItem()
             {
                 Name = "Tengeri hal trió",
                 Description = "Atlanti lazactatár, pácolt lazacfilé és tonhal lazackaviárral",
@@ -50,36 +51,36 @@ namespace OopRestaurant201807.Migrations
                 Category = category2
             });
 
-            context.MenuItems.AddOrUpdate(new MenuItem()
+            context.MenuItems.AddOrUpdate(x => x.Name, new MenuItem()
             {
                 Name = "Borjúesszencia",
-                Description = "Zöldséges gyöngytyúk galuska",
+                Description = "Zöldséges gyöngytyúk galuska (módosítva)",
                 Price = 4500,
                 Category = category1
             });
 
-            context.MenuItems.AddOrUpdate(new MenuItem()
+            context.MenuItems.AddOrUpdate(x => x.Name, new MenuItem()
             {
                 Name = "Szarvasgomba cappuccino",
                 Price = 4500,
                 Category = category1
             });
 
-            context.MenuItems.AddOrUpdate(new MenuItem()
+            context.MenuItems.AddOrUpdate(x => x.Name, new MenuItem()
             {
                 Name = "Hirtelen sült fogasderék illatos erdei gombákkal",
                 Price = 4500,
                 Category = category3
             });
 
-            context.MenuItems.AddOrUpdate(new MenuItem()
+            context.MenuItems.AddOrUpdate(x => x.Name, new MenuItem()
             {
                 Name = "Gundel Károly gulyáslevese 1910",
                 Price = 3500,
                 Category = category1
             });
 
-            context.MenuItems.AddOrUpdate(new MenuItem()
+            context.MenuItems.AddOrUpdate(x => x.Name, new MenuItem()
             {
                 Name = "Szárított érlelt bélszín carpaccio",
                 Description = "Öreg Trappista sajt, keserû levelek",
