@@ -638,7 +638,7 @@ a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésr�
 - [ ] Lenyílómező használata, ha az adatmodell LazyLoading-ot használ (virtual kulcsszó)
   - [X] DisplayTemplate a közös megtekintő nézetekre (Details és Delete)
   - [X] EditorTemplate a közös módosító nézetekre (Create és Edit)
-  - [ ] A közös nézeteken lenyílómezővel módosítani
+  - [X] A közös nézeteken lenyílómezővel módosítani
         Ha ilyen hibaüzenetet kapunk:
         ```
         System.InvalidOperationException
