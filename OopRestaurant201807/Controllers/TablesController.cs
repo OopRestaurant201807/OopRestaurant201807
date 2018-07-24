@@ -10,6 +10,11 @@ using OopRestaurant201807.Models;
 
 namespace OopRestaurant201807.Controllers
 {
+    /// <summary>
+    /// Kikényszerítjük, hogy csak az admin és a cook csoportba tartozó felhasználók használhatják
+    /// ezt az Action-t
+    /// </summary>
+    [Authorize(Roles = "admin,waiter")]
     public class TablesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

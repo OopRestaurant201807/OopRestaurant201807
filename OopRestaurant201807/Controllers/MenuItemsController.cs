@@ -41,10 +41,10 @@ namespace OopRestaurant201807.Controllers
         #region Csak bejelentkezett felhasználók által használható actionök
         // GET: MenuItems/Create
         /// <summary>
-        /// Kikényszerítjük, hogy csak bejelentkezett 
-        /// felhasználók használhassák ezt az Action-t
+        /// Kikényszerítjük, hogy csak az admin és a cook csoportba tartozó felhasználók használhatják
+        /// ezt az Action-t
         /// </summary>
-        [Authorize]
+        [Authorize(Roles = "admin,cook")]
         public ActionResult Create()
         {
             var menuItem = new MenuItem();
@@ -72,7 +72,11 @@ namespace OopRestaurant201807.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        /// <summary>
+        /// Kikényszerítjük, hogy csak az admin és a cook csoportba tartozó felhasználók használhatják
+        /// ezt az Action-t
+        /// </summary>
+        [Authorize(Roles = "admin,cook")]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Price,CategoryId")] MenuItem menuItem)
         {
             //a menuItem.Category kitöltése
@@ -105,7 +109,11 @@ namespace OopRestaurant201807.Controllers
         }
 
         // GET: MenuItems/Edit/5
-        [Authorize]
+        /// <summary>
+        /// Kikényszerítjük, hogy csak az admin és a cook csoportba tartozó felhasználók használhatják
+        /// ezt az Action-t
+        /// </summary>
+        [Authorize(Roles = "admin,cook")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -134,7 +142,11 @@ namespace OopRestaurant201807.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        /// <summary>
+        /// Kikényszerítjük, hogy csak az admin és a cook csoportba tartozó felhasználók használhatják
+        /// ezt az Action-t
+        /// </summary>
+        [Authorize(Roles = "admin,cook")]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Price,CategoryId")] MenuItem menuItem)
         {
             //a menuItem.Category kitöltése
@@ -192,7 +204,11 @@ namespace OopRestaurant201807.Controllers
         }
 
         // GET: MenuItems/Delete/5
-        [Authorize]
+        /// <summary>
+        /// Kikényszerítjük, hogy csak az admin és a cook csoportba tartozó felhasználók használhatják
+        /// ezt az Action-t
+        /// </summary>
+        [Authorize(Roles = "admin,cook")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -214,7 +230,11 @@ namespace OopRestaurant201807.Controllers
         // POST: MenuItems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        /// <summary>
+        /// Kikényszerítjük, hogy csak az admin és a cook csoportba tartozó felhasználók használhatják
+        /// ezt az Action-t
+        /// </summary>
+        [Authorize(Roles = "admin,cook")]
         public ActionResult DeleteConfirmed(int id)
         {
             MenuItem menuItem = db.MenuItems.Find(id);

@@ -26,8 +26,11 @@
                     {
                         <li>@Html.ActionLink("Ételek", "Index", "MenuItems")</li>
                         <li>@Html.ActionLink("Kategóriák", "Index", "Categories")</li>
-                        <li>@Html.ActionLink("Helyszínek", "Index", "Locations")</li>
-                        <li>@Html.ActionLink("Asztalok", "Index", "Tables")</li>
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                    <li>@Html.ActionLink("Helyszínek", "Index", "Locations")</li>
+                    <li>@Html.ActionLink("Asztalok", "Index", "Tables")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

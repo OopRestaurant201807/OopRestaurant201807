@@ -10,6 +10,7 @@ using OopRestaurant201807.Models;
 
 namespace OopRestaurant201807.Controllers
 {
+    [Authorize(Roles = "admin,waiter")]
     public class LocationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
