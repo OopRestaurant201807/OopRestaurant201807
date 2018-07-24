@@ -38,7 +38,10 @@ namespace OopRestaurant201807.Controllers
         // GET: Tables/Create
         public ActionResult Create()
         {
-            return View();
+            var table = new Table();
+            FillAssignablaLocations(table);
+
+            return View(table);
         }
 
         // POST: Tables/Create
@@ -67,11 +70,7 @@ namespace OopRestaurant201807.Controllers
             }
             Table table = db.Tables.Find(id);
 
-            //lenyíló adatainak a feltöltése
-            table.AssignableLocations = db.Locations
-                                          .Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() })
-                                          .ToList()
-                                          ;
+            FillAssignablaLocations(table);
 
             //az aktuálisan kiválasztott helyszín
             table.LocationId = table.Location.Id;
@@ -81,6 +80,15 @@ namespace OopRestaurant201807.Controllers
                 return HttpNotFound();
             }
             return View(table);
+        }
+
+        private void FillAssignablaLocations(Table table)
+        {
+            //lenyíló adatainak a feltöltése
+            table.AssignableLocations = db.Locations
+                                          .Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() })
+                                          .ToList()
+                                          ;
         }
 
         // POST: Tables/Edit/5
