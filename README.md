@@ -635,3 +635,8 @@ a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésr�
 
 ### 13. feladat
 - [X] EditorTemplate: az Edit nézet és a Create nézet ugyanazt előidéző megjelenítő kódját kiemelni egy külön állományba
+- [ ] Lenyílómező használata, ha az adatmodell LazyLoading-ot használ (virtual kulcsszó)
+  - [ ] DisplayTemplate a közös megtekintő nézetekre (Details és Delete)
+  - [ ] EditorTemplate a közös módosító nézetekre (Create és Edit)
+  - [ ] A közös nézeteken lenyílómezővel megjeleníteni
+  - [ ] A közös nézeteken lenyílómezővel módosítani

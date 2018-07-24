@@ -8,18 +8,8 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Table</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
+    
+    @Html.DisplayForModel()
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
