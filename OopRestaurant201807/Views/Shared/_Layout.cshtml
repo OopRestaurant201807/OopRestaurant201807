@@ -22,15 +22,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Menu", "Index", "Menu")</li>
-                    @if (Request.IsAuthenticated)
+                    @if (Request.RequestContext.HttpContext.User.IsInRole("admin")
+                         || Request.RequestContext.HttpContext.User.IsInRole("cook"))
                     {
                         <li>@Html.ActionLink("Ételek", "Index", "MenuItems")</li>
                         <li>@Html.ActionLink("Kategóriák", "Index", "Categories")</li>
                     }
-                    @if (Request.IsAuthenticated)
+                    @if (Request.RequestContext.HttpContext.User.IsInRole("admin")
+                         || Request.RequestContext.HttpContext.User.IsInRole("waiter"))
                     {
-                    <li>@Html.ActionLink("Helyszínek", "Index", "Locations")</li>
-                    <li>@Html.ActionLink("Asztalok", "Index", "Tables")</li>
+                        <li>@Html.ActionLink("Helyszínek", "Index", "Locations")</li>
+                        <li>@Html.ActionLink("Asztalok", "Index", "Tables")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
