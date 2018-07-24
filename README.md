@@ -656,4 +656,43 @@ a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésr�
        akkor a hiba oka az, hogy a lenyíló adattartalmát (jelen esetben AssignablesLocations nem inicializáltuk) 
 
 
-  - [ ] A közös nézeteken lenyílómezővel megjeleníteni
+  - [X] A közös nézeteken lenyílómezővel megjeleníteni
+  
+
+
+A validálás különböző lehetséges pontjai: minden alkalommal validáljon az alkalmazás, és ahol lehet, ott védje magát az adatbázis is!
+
+```
+  Felület                                              Alkalmazás                                       Adatbázis
+
++----------------------+                             +-------------------+                            +----------------------+
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |   +--------------------->   |                   |    +-------------------->  |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
+|                      |                             |                   |                            |                      |
++----------------------+                             +-------------------+                            +----------------------+
+
+                  ^                                         ^                                             ^
+                  |                                         |                                             |
+                  |                                         |                                             |
+                  +                                         +                                             +
+
+            Validálás                                   Validálás                                      Validálás
+```
+
+### 6. házi feladat
+- A required bekpacsolása a Table.Location mezőn, adatbázisba írása és a következmények lekezelése mindenhol
+- 

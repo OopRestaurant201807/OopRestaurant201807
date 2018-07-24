@@ -28,6 +28,9 @@ namespace OopRestaurant201807.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Table table = db.Tables.Find(id);
+
+            FillAssignableLocations(table);
+
             if (table == null)
             {
                 return HttpNotFound();
@@ -39,7 +42,7 @@ namespace OopRestaurant201807.Controllers
         public ActionResult Create()
         {
             var table = new Table();
-            FillAssignablaLocations(table);
+            FillAssignableLocations(table);
 
             return View(table);
         }
@@ -74,10 +77,7 @@ namespace OopRestaurant201807.Controllers
             }
             Table table = db.Tables.Find(id);
 
-            FillAssignablaLocations(table);
-
-            //az aktuálisan kiválasztott helyszín
-            table.LocationId = table.Location.Id;
+            FillAssignableLocations(table);
 
             if (table == null)
             {
@@ -86,13 +86,21 @@ namespace OopRestaurant201807.Controllers
             return View(table);
         }
 
-        private void FillAssignablaLocations(Table table)
+        private void FillAssignableLocations(Table table)
         {
             //lenyíló adatainak a feltöltése
             table.AssignableLocations = db.Locations
                                           .Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() })
                                           .ToList()
                                           ;
+
+            //a lenyíló aktuális értékének a kitöltése
+            if (table.Location!=null)
+            { //csak, ha létezik a Location
+                table.LocationId = table.Location.Id;
+            }
+            //ha nem létezik a Location, akkor a table.LocationId az alapértelmezett 0 lesz.
+
         }
 
         // POST: Tables/Edit/5
@@ -138,6 +146,7 @@ namespace OopRestaurant201807.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Table table = db.Tables.Find(id);
+            FillAssignableLocations(table);
             if (table == null)
             {
                 return HttpNotFound();
