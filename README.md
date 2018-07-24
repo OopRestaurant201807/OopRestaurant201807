@@ -624,16 +624,14 @@ a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésr�
   - [X] A \View\Shared\DisplayTemplates mappában lévő cshtml-ek a felhasználható alkotóelemek
   - [X] Ezeket több helyről is meg lehet hivatkozni.
 
-
 ### 5. házi feladat
 - a login oldal jobboldalának a magyarítása
 - Menu, MenuItem és Category többi oldalak magyarítása
 - lenyíló másféleképpen: FillAssignableCategories vegyen föl egy adatbázisban nem létező kategóriát, és ez legyen az első elem
-- 
-
-
-
-
+- DisplayTemplate használata a Table, Category és a MenuItem nézetekben
 
 ### Kérdések
 - [DefaultValue] //todo: ez hogy működik?
+
+### 13. feladat
+- [X] EditorTemplate: az Edit nézet és a Create nézet ugyanazt előidéző megjelenítő kódját kiemelni egy külön állományba
