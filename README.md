@@ -638,5 +638,22 @@ a megoldás az, hogy a paramétert az előző EDIT input generáló kifejezésr�
 - [ ] Lenyílómező használata, ha az adatmodell LazyLoading-ot használ (virtual kulcsszó)
   - [X] DisplayTemplate a közös megtekintő nézetekre (Details és Delete)
   - [X] EditorTemplate a közös módosító nézetekre (Create és Edit)
-  - [ ] A közös nézeteken lenyílómezővel megjeleníteni
   - [ ] A közös nézeteken lenyílómezővel módosítani
+        Ha ilyen hibaüzenetet kapunk:
+        ```
+        System.InvalidOperationException
+          HResult=0x80131509
+          Message=The ViewData item that has the key 'LocationId' is of type 'System.Int32' but must be of type 'IEnumerable<SelectListItem>'.
+          Source=System.Web.Mvc
+          StackTrace:
+           at System.Web.Mvc.Html.SelectExtensions.GetSelectData(HtmlHelper htmlHelper, String name)
+           at System.Web.Mvc.Html.SelectExtensions.SelectInternal(HtmlHelper htmlHelper, ModelMetadata metadata, String optionLabel, String name, IEnumerable`1 selectList, Boolean allowMultiple, IDictionary`2 htmlAttributes)
+           at System.Web.Mvc.Html.SelectExtensions.DropDownListFor[TModel,TProperty](HtmlHelper`1 htmlHelper, Expression`1 expression, IEnumerable`1 selectList, String optionLabel, IDictionary`2 htmlAttributes)
+           at System.Web.Mvc.Html.SelectExtensions.DropDownListFor[TModel,TProperty](HtmlHelper`1 htmlHelper, Expression`1 expression, IEnumerable`1 selectList, Object htmlAttributes)
+           at ASP._Page_Views_Shared_EditorTemplates_Table_cshtml.Execute() in D:\Repos\OopRestaurant201807\OopRestaurant201807\Views\Shared\EditorTemplates\Table.cshtml:line 19
+            (...)
+       ```
+       akkor a hiba oka az, hogy a lenyíló adattartalmát (jelen esetben AssignablesLocations nem inicializáltuk) 
+
+
+  - [ ] A közös nézeteken lenyílómezővel megjeleníteni
