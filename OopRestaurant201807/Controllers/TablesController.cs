@@ -100,11 +100,24 @@ namespace OopRestaurant201807.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Table table)
+        public ActionResult Edit([Bind(Include = "Id,Name,LocationId")] Table table)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(table).State = EntityState.Modified;
+                //betöltjük az adatbázisból a Location példányt
+                var location = db.Locations.Find(table.LocationId);
+
+                //elvégezzük a Table példány csatolását az adatbázishoz
+                //két lépésben
+                //ÉS betöltjük a navigation property (table.Location) aktuális értékét 
+                db.Tables.Attach(table);
+                var tableEntry = db.Entry(table);
+                tableEntry.Reference(x => x.Location)
+                          .Load();
+
+                //beállítjuk a helyszín értékét
+                table.Location = location;
+                tableEntry.State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
