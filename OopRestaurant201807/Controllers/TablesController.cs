@@ -107,17 +107,23 @@ namespace OopRestaurant201807.Controllers
                 //betöltjük az adatbázisból a Location példányt
                 var location = db.Locations.Find(table.LocationId);
 
-                //elvégezzük a Table példány csatolását az adatbázishoz
-                //két lépésben
-                //ÉS betöltjük a navigation property (table.Location) aktuális értékét 
-                db.Tables.Attach(table);
-                var tableEntry = db.Entry(table);
-                tableEntry.Reference(x => x.Location)
-                          .Load();
+                //betöltjük az asztal aktuális adatait
+                var tableToUpdate = db.Tables.Find(table.Id);
+
+                //abban az esetben, ha a property nem virtual, vagyis nincs
+                //LazyLoading, így tudunk navigázisó property-t tölteni automatikusan
+
+                //var tableToUpdate = db.Tables
+                //                      .Include(x=>x.Location)
+                //                      .FirstOrDefault(x => x.Id == table.Id);
+
+                //az aktuális értékeket át kell írni a most kapott értékekkel
+                tableToUpdate.Name = table.Name;
+                //itt az összes módosítandó property-t fel kell sorolni
 
                 //beállítjuk a helyszín értékét
-                table.Location = location;
-                tableEntry.State = EntityState.Modified;
+                tableToUpdate.Location = location;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
