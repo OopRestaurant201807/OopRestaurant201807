@@ -735,4 +735,32 @@ A validálás különböző lehetséges pontjai: minden alkalommal validáljon a
 
 ### 6. házi feladat
 - A required bekpacsolása a Table.Location mezőn, adatbázisba írása és a következmények lekezelése mindenhol
-- 
+
+
+### Hibajavítás
+
+Ha ilyen hibába futtok a kód letöltése után:
+```
+PM> update-database
+& : File C:\Users\admin\Repos\OopRestaurant201807\packages\EntityFramework.6.2.0\tools\init.ps1 cannot be loaded because running scripts is disabled on this system. Fo
+r more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:45
++ ... rgs+=$_}; & 'C:\Users\admin\Repos\OopRestaurant201807\packages\Entity ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+update-database : The term 'update-database' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or 
+if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ update-database
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (update-database:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+```
+
+Ez lehet egy megoldás:
+```
+Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+```
+
+Visual Studióból kilépés és belépés, majd rebuild, és update-database.
