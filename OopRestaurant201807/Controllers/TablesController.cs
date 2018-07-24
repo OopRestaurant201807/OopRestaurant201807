@@ -49,10 +49,14 @@ namespace OopRestaurant201807.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Table table)
+        public ActionResult Create([Bind(Include = "Id,Name,LocationId")] Table table)
         {
+            //todo: ha a Location mező Required lesz, akkor újra kell validálni
+
             if (ModelState.IsValid)
             {
+                var location = db.Locations.Find(table.LocationId);
+                table.Location = location;
                 db.Tables.Add(table);
                 db.SaveChanges();
                 return RedirectToAction("Index");
