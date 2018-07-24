@@ -693,6 +693,46 @@ A validálás különböző lehetséges pontjai: minden alkalommal validáljon a
             Validálás                                   Validálás                                      Validálás
 ```
 
+### 14. feladat
+- [ ] hozzunk létre különböző jogosultságcsoportokat
+- [ ] hozzunk létre mindegyiknek felhasználót
+- [ ] igazítsuk az alkalmazás működését ennek megfelelően
+
+```
++----------------------------------------------------------------------------------------------------------------------+
+| Mindenki                                                                                                             |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                        +-------------------------------------------------------------------------+   |
+|                                        | Bejelentkezett felhasználók                                             |   |
+|                                        |                                                                         |   |
+|                                        |                                                                         |   |
+|                                        |                                                                         |   |
+|                                        |                                                                         |   |
+|                                        |                                                                         |   |
+|                                        |   +----------------------------+   +------------------+  +------------+ |   |
+|                                        |   | Admin                      |   | Pincér           |  | Szakács    | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   | Ő mindent tud              |   | Asztalokat       |  | Menüt      | |   |
+|                                        |   |                            |   | mozgathat        |  | írhat      | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   |                            |   |                  |  |            | |   |
+|                                        |   +----------------------------+   +------------------+  +------------+ |   |
+|                                        |                                                                         |   |
+|                                        +-------------------------------------------------------------------------+   |
+|                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------+
+
+```
+
+
 ### 6. házi feladat
 - A required bekpacsolása a Table.Location mezőn, adatbázisba írása és a következmények lekezelése mindenhol
 - 

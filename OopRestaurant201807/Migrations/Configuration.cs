@@ -45,7 +45,7 @@ namespace OopRestaurant201807.Migrations
             //8   Gundel Károly gulyáslevese 1910 NULL    3500    1
             //9   Szárított érlelt bélszín carpaccio  Öreg Trappista sajt, keserû levelek 5000    2
 
-            context.MenuItems.AddOrUpdate(x=>x.Name, new MenuItem()
+            context.MenuItems.AddOrUpdate(x => x.Name, new MenuItem()
             {
                 Name = "Tengeri hal trió",
                 Description = "Atlanti lazactatár, pácolt lazacfilé és tonhal lazackaviárral",
@@ -107,20 +107,65 @@ namespace OopRestaurant201807.Migrations
                 new Table { Name = "5. asztal", Location = loc3 },
                 new Table { Name = "6. asztal", Location = loc3 }
             );
-            
-            // felhasználó rögzítése
-            // figyelem: nem rögzítünk adatbázisba közvetlenül adatot, 
-            //hanem az Identity által kínált szolgáltatás(oka)t használjuk
 
+            //cook, waiter, admin
+            // jogosultságcsoport rögzítése
+            AddRoleIfNotExists(context, "admin");
+            AddRoleIfNotExists(context, "cook");
+            AddRoleIfNotExists(context, "waiter");
+
+            //felhasználók rögzítése
+            AddUserIfNotExists(context, "gabor.plesz@gmail.com", "gabor.plesz@gmail.com", "admin,cook,waiter");
+            AddUserIfNotExists(context, "pincer@gmail.com", "pincer@gmail.com", "waiter");
+            AddUserIfNotExists(context, "szakacs@gmail.com", "szakacs@gmail.com", "cook");
+        }
+
+
+        /// <summary>
+        /// Felhasználócsoport rögzítése, ha még nem létezik
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="roleName"></param>
+        private void AddRoleIfNotExists(ApplicationDbContext context, string roleName)
+        {
+
+            //RoleStore: adatbázist író réteg
+            //RoleManager: az alkalmazás felé az egységes felület
+
+            var store = new RoleStore<IdentityRole>(context);
+            var manager = new RoleManager<IdentityRole>(store);
+
+            var roleExists= manager.FindByName(roleName);
+            if (roleExists==null)
+            { //nincs még ilyen, létre kell hoznunk
+                var role = new IdentityRole(roleName);
+                var result = manager.Create(role);
+
+                if (!result.Succeeded)
+                {
+                    throw new Exception(string.Join(",", result.Errors));
+                }
+            }
+        }
+
+        /// <summary>
+        /// felhasználó rögzítése, ha még nem létezik
+        ///   figyelem: nem rögzítünk adatbázisba közvetlenül adatot, 
+        ///   hanem az Identity által kínált szolgáltatás(oka)t használjuk
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="userName"></param>
+        /// <param name="email"></param>
+        private static void AddUserIfNotExists(ApplicationDbContext context, string userName, string email, string roles)
+        {
             var user = new ApplicationUser
             {
-                UserName = "gabor.plesz@gmail.com",
-                Email = "gabor.plesz@gmail.com",
+                UserName = userName,
+                Email = email,
             };
 
-            // UserStore: ez felel az adatok rögzítéséért
+            //UserStore: ez felel az adatok rögzítéséért
             //UserManager: a programozási felület.
-
             //context <- UserStore <- UserManager
 
             var store = new UserStore<ApplicationUser>(context);
@@ -128,7 +173,7 @@ namespace OopRestaurant201807.Migrations
 
             //ellenõrizni kell, hogy létezik-e már ilyen felhasználó?
             var userExists = manager.FindByEmail(user.Email);
-            if (null==userExists)
+            if (null == userExists)
             { // még nincs ilyen felhasználó, rögzítsük
               //itt megadjuk a felhasználó jelszavát, és 
               //így az Identity generálja az adatbázisba írt HASH kódot
@@ -161,6 +206,12 @@ namespace OopRestaurant201807.Migrations
 
                     //a legtömörebb megoldás pedig a string osztály beépített Join föggvénye
                     throw new Exception(string.Join(",", result.Errors));
+                }
+
+                //hozzárendelés jogosultságcsoportokhoz
+                foreach (var role in roles.Split(',')) //a vesszõ mentén szétszedjük a paramétert tömbre, amin végigsétálunk
+                {
+                    manager.AddToRole(user.Id, role);
                 }
             }
         }
